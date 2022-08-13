@@ -1,0 +1,41 @@
+@import '../../../App.scss';
+
+.CreateUser {
+  @include Section;
+  margin-top: 5rem;
+  margin-bottom: 5rem;
+
+  .Title {
+    font-size: 2.2rem;
+  }
+
+  .Form {
+    width: 20rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .Label {
+      align-self: start;
+      font-size: 1.4rem;
+      margin-top: 1rem;
+    }
+
+    .Input {
+      color: black;
+      background-color: white;
+      margin-top: 0.4rem;
+      width: 100%;
+      border: none;
+      outline: none;
+      border-radius: 0.5rem;
+      padding: 0.2rem 0 0 0.8rem;
+      height: 3rem;
+      font-size: 1.4rem;
+    }
+
+    .Btn {
+      margin-top: 1rem;
+    }
+  }
+}

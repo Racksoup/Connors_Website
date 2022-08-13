@@ -1,0 +1,66 @@
+@mixin btn() {
+  height: 2rem;
+  font-size: 1rem;
+  font-weight: 700;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  text-decoration: none;
+  background-color: rgb(185, 126, 67);
+  color: black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  border: solid 0.1rem black;
+
+  &:hover {
+    border: none;
+    font-size: 1.1rem;
+  }
+}
+
+.Btn {
+  @include btn;
+  width: 7rem;
+
+  &-1 {
+    @include btn;
+    padding: 0.3rem;
+    min-width: 4rem;
+  }
+  &-2 {
+    @include btn;
+    width: 2rem;
+    height: 2rem;
+    background-color: rgb(179, 0, 0);
+  }
+  &-3 {
+    @include btn;
+    width: 1.1rem;
+    height: 1.1rem;
+    background-color: rgb(179, 0, 0);
+  }
+  &-4 {
+    @include btn;
+    width: 1rem;
+    height: 1rem;
+    border-radius: 0.2rem;
+    background-color: rgb(179, 0, 0);
+    font-size: 0.6rem;
+    color: black;
+    &:hover {
+      font-size: 0.7rem;
+    }
+  }
+  &-5 {
+    @include btn;
+    width: 1rem;
+    height: 1rem;
+    border-radius: 0.2rem;
+    font-size: 0.6rem;
+    color: black;
+    &:hover {
+      font-size: 0.7rem;
+    }
+  }
+}
