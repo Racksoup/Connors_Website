@@ -13,7 +13,6 @@ app.use(express.json({ extend: false }));
 
 // routes
 app.use('/api/admin', require('./routes/api/admin'));
-app.use('/api/users', require('./routes/api/users'));
 
 // production
 if (process.env.NODE_ENV === 'production') {
