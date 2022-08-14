@@ -15,3 +15,9 @@ $navColorBottom: rgb(28, 38, 50);
     margin: 0 1rem;
   }
 }
+
+@media (max-width: 1000px) {
+  .Navbar {
+    width: 98%;
+  }
+}

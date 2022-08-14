@@ -38,7 +38,8 @@
     align-items: center;
 
     @media (max-width: 1000px) {
-      width: 99vw;
+      width: 100%;
+      margin: 2rem 0 0 0;
     }
 
     .Title {
@@ -104,6 +105,10 @@
         align-items: center;
         cursor: pointer;
 
+        @media (max-width: 1000px) {
+          padding: 0 0.3rem;
+        }
+
         .Label {
           max-width: 80%;
           font-size: 1rem;
@@ -122,6 +127,28 @@
         &-Btns {
           display: flex;
         }
+      }
+    }
+  }
+}
+
+@media (max-width: 1000px) {
+  .Lists {
+    margin: 0.6rem 0 1rem 0;
+    .Nav {
+      width: 100%;
+      grid-template-columns: 1fr 1fr 1fr;
+
+      .Btn {
+        height: 3rem;
+      }
+    }
+
+    .Item-Btns {
+      .Btn {
+        width: 1.6rem;
+
+        margin: 0 0.05rem;
       }
     }
   }

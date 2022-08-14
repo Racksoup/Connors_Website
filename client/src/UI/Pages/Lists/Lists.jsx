@@ -207,7 +207,7 @@ const Lists = () => {
                   <FontAwesomeIcon icon={faPlus} className='Icon' />
                 </div>
                 <div className='Btn' onClick={() => toggleUpdateListModal(true)}>
-                  <FontAwesomeIcon icon={faArrowUp} />
+                  <FontAwesomeIcon icon={faArrowUp} className='Icon' />
                 </div>
               </div>
             </div>
@@ -303,13 +303,13 @@ const ItemChain = ({
         </div>
         <div className='Item-Btns'>
           <div className='Btn Btn-Add' onClick={(e) => addItemClicked(e, item)}>
-            <FontAwesomeIcon icon={faPlus} />
+            <FontAwesomeIcon icon={faPlus} className='Icon' />
           </div>
           <div className='Btn' onClick={(e) => updateItemClicked(e, item)}>
-            <FontAwesomeIcon icon={faArrowUp} />
+            <FontAwesomeIcon icon={faArrowUp} className='Icon' />
           </div>
           <div className='Btn Btn-Delete' onClick={(e) => itemDeleteClicked(e, item)}>
-            <FontAwesomeIcon icon={faX} />
+            <FontAwesomeIcon icon={faX} className='Icon' />
           </div>
         </div>
       </div>
