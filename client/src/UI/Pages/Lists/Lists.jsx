@@ -190,7 +190,7 @@ const Lists = () => {
         </div>
         <div className='Nav'>
           {lists.map((list) => (
-            <div className='Btn-1' onClick={() => clickedList(list)}>
+            <div className='Btn' onClick={() => clickedList(list)}>
               {list.title}
             </div>
           ))}

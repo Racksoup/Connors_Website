@@ -2,6 +2,7 @@
 
 .Lists {
   @include Section;
+  margin: 1rem 0;
 
   .NewListBtn {
     margin: 0 0 1rem 0;
@@ -10,6 +11,20 @@
     .Icon {
       margin: 0 0.3rem 0 0;
       font-size: 1rem;
+    }
+  }
+
+  .Nav {
+    width: 50rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+    gap: 0.4rem;
+
+    .Btn {
+      background-color: rgb(222, 202, 255);
+      margin: 0.2rem 0.1rem;
+      height: 3.6rem;
+      width: 100%;
     }
   }
 
