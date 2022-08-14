@@ -1,0 +1,65 @@
+@import '../../../App.scss';
+
+.Weather {
+  @include Section;
+
+  .Title {
+    font-size: 1.2rem;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+  }
+
+  .Nav {
+    display: flex;
+    width: 30rem;
+    justify-content: space-between;
+    margin: 1rem 0;
+
+    .Btn {
+      height: 3rem;
+    }
+  }
+}
+
+.Minutely {
+  margin: 0.8rem 7rem 0px 0px;
+  height: 23rem;
+  width: 40rem;
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+  flex-wrap: wrap;
+}
+
+.Forecast {
+  width: 40rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+}
+
+.Forecast-DayFlex {
+  width: 12rem;
+  padding: 0.6rem;
+  border-width: 1px;
+  border-style: solid;
+  border-color: rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.Forecast-HourFlex {
+  width: 90%;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  justify-items: start;
+}
+
+.Forecast-HourItem {
+  width: 100%;
+  display: flex;
+}
