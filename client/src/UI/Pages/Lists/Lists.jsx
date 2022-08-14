@@ -123,136 +123,134 @@ const Lists = () => {
 
   if (list)
     return (
-      <div className='Section'>
-        <div className='Lists'>
-          {modal == true && (
-            <Modal
-              toggleModal={toggleModal}
-              createListFunc={createList}
-              initState={newListInitState}
-              title='Create New List'
-              resize={false}
-            />
-          )}
-          {newItemModal == true && (
-            <Modal
-              toggleModal={toggleNewItemModal}
-              createListFunc={createListItem}
-              initState={newItemInitState}
-              title='Create New Item'
-              resize={true}
-            />
-          )}
-          {newNestedItemModal == true && (
-            <Modal
-              toggleModal={toggleNewNestedItemModal}
-              createListFunc={createListItem}
-              initState={newNestedItemInitState}
-              title='Create New Item'
-              resize={true}
-            />
-          )}
-          {updateItemModal == true && (
-            <Modal
-              toggleModal={toggleUpdateItemModal}
-              createListFunc={updateListItem}
-              initState={lastItemClicked}
-              title='Update Item'
-              resize={true}
-            />
-          )}
-          {deleteItemModal == true && (
-            <DeleteModal
-              toggleModal={toggleDeleteItemModal}
-              delFunc={deleteListItem}
-              state={lastItemClicked}
-            />
-          )}
-          {deleteListModal == true && (
-            <DeleteModal
-              toggleModal={toggleDeleteListModal}
-              delFunc={deleteListClicked}
-              state={lastListClicked}
-            />
-          )}
-          {updateListModal == true && (
-            <Modal
-              toggleModal={toggleUpdateListModal}
-              createListFunc={updateListClicked}
-              initState={lastListClicked}
-              title='Update List'
-              resize={false}
-            />
-          )}
+      <div className='Lists'>
+        {modal == true && (
+          <Modal
+            toggleModal={toggleModal}
+            createListFunc={createList}
+            initState={newListInitState}
+            title='Create New List'
+            resize={false}
+          />
+        )}
+        {newItemModal == true && (
+          <Modal
+            toggleModal={toggleNewItemModal}
+            createListFunc={createListItem}
+            initState={newItemInitState}
+            title='Create New Item'
+            resize={true}
+          />
+        )}
+        {newNestedItemModal == true && (
+          <Modal
+            toggleModal={toggleNewNestedItemModal}
+            createListFunc={createListItem}
+            initState={newNestedItemInitState}
+            title='Create New Item'
+            resize={true}
+          />
+        )}
+        {updateItemModal == true && (
+          <Modal
+            toggleModal={toggleUpdateItemModal}
+            createListFunc={updateListItem}
+            initState={lastItemClicked}
+            title='Update Item'
+            resize={true}
+          />
+        )}
+        {deleteItemModal == true && (
+          <DeleteModal
+            toggleModal={toggleDeleteItemModal}
+            delFunc={deleteListItem}
+            state={lastItemClicked}
+          />
+        )}
+        {deleteListModal == true && (
+          <DeleteModal
+            toggleModal={toggleDeleteListModal}
+            delFunc={deleteListClicked}
+            state={lastListClicked}
+          />
+        )}
+        {updateListModal == true && (
+          <Modal
+            toggleModal={toggleUpdateListModal}
+            createListFunc={updateListClicked}
+            initState={lastListClicked}
+            title='Update List'
+            resize={false}
+          />
+        )}
 
-          <div className='Btn NewListBtn' onClick={() => toggleModal(true)}>
-            <FontAwesomeIcon className='Icon' icon={faPlus} />
-            New List
-          </div>
-          <div className='Nav'>
-            {lists.map((list) => (
-              <div className='Btn-1' onClick={() => clickedList(list)}>
-                {list.title}
+        <div className='Btn NewListBtn' onClick={() => toggleModal(true)}>
+          <FontAwesomeIcon className='Icon' icon={faPlus} />
+          New List
+        </div>
+        <div className='Nav'>
+          {lists.map((list) => (
+            <div className='Btn-1' onClick={() => clickedList(list)}>
+              {list.title}
+            </div>
+          ))}
+        </div>
+        {lastListClicked && (
+          <div className='List'>
+            <div className='ListNav'>
+              <div className='Btn Btn-Delete' onClick={() => toggleDeleteListModal(true)}>
+                <FontAwesomeIcon icon={faX} className='Icon' />
               </div>
-            ))}
-          </div>
-          {lastListClicked && (
-            <div className='List'>
-              <div className='ListNav'>
-                <div className='Btn Btn-Delete' onClick={() => toggleDeleteListModal(true)}>
-                  <FontAwesomeIcon icon={faX} className='Icon' />
+              <h3 className='Title'>{lastListClicked.title}</h3>
+              <div className='Btns'>
+                <div className='Btn Btn-Add' onClick={() => toggleNewItemModal(true)}>
+                  <FontAwesomeIcon icon={faPlus} className='Icon' />
                 </div>
-                <h3 className='Title'>{lastListClicked.title}</h3>
-                <div className='Btns'>
-                  <div className='Btn Btn-Add' onClick={() => toggleNewItemModal(true)}>
-                    <FontAwesomeIcon icon={faPlus} className='Icon' />
-                  </div>
-                  <div className='Btn' onClick={() => toggleUpdateListModal(true)}>
-                    <FontAwesomeIcon icon={faArrowUp} />
-                  </div>
+                <div className='Btn' onClick={() => toggleUpdateListModal(true)}>
+                  <FontAwesomeIcon icon={faArrowUp} />
                 </div>
-              </div>
-              <div className='Items'>
-                {list.map((item) => {
-                  if (item.parentId === item.listId && !item.checked) {
-                    return (
-                      <ItemChain
-                        item={item}
-                        list={list}
-                        clickedItem={clickedItem}
-                        toggleNewNestedItemModal={toggleNewNestedItemModal}
-                        checkClicked={checkClicked}
-                        deleteListItem={deleteListItem}
-                        depth={0}
-                        addItemClicked={addItemClicked}
-                        updateItemClicked={updateItemClicked}
-                        itemDeleteClicked={itemDeleteClicked}
-                      />
-                    );
-                  }
-                })}
-                {list.map((item) => {
-                  if (item.parentId === item.listId && item.checked) {
-                    return (
-                      <ItemChain
-                        item={item}
-                        list={list}
-                        clickedItem={clickedItem}
-                        toggleNewNestedItemModal={toggleNewNestedItemModal}
-                        checkClicked={checkClicked}
-                        deleteListItem={deleteListItem}
-                        depth={0}
-                        addItemClicked={addItemClicked}
-                        updateItemClicked={updateItemClicked}
-                        itemDeleteClicked={itemDeleteClicked}
-                      />
-                    );
-                  }
-                })}
               </div>
             </div>
-          )}
-        </div>
+            <div className='Items'>
+              {list.map((item) => {
+                if (item.parentId === item.listId && !item.checked) {
+                  return (
+                    <ItemChain
+                      item={item}
+                      list={list}
+                      clickedItem={clickedItem}
+                      toggleNewNestedItemModal={toggleNewNestedItemModal}
+                      checkClicked={checkClicked}
+                      deleteListItem={deleteListItem}
+                      depth={0}
+                      addItemClicked={addItemClicked}
+                      updateItemClicked={updateItemClicked}
+                      itemDeleteClicked={itemDeleteClicked}
+                    />
+                  );
+                }
+              })}
+              {list.map((item) => {
+                if (item.parentId === item.listId && item.checked) {
+                  return (
+                    <ItemChain
+                      item={item}
+                      list={list}
+                      clickedItem={clickedItem}
+                      toggleNewNestedItemModal={toggleNewNestedItemModal}
+                      checkClicked={checkClicked}
+                      deleteListItem={deleteListItem}
+                      depth={0}
+                      addItemClicked={addItemClicked}
+                      updateItemClicked={updateItemClicked}
+                      itemDeleteClicked={itemDeleteClicked}
+                    />
+                  );
+                }
+              })}
+            </div>
+          </div>
+        )}
       </div>
     );
 };

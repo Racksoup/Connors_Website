@@ -3,7 +3,7 @@ import './Home.scss';
 
 import { Navigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectIsAuthenticated } from '../../../Redux/adminSlice';
+import { loadAdmin, selectIsAuthenticated } from '../../../Redux/adminSlice';
 
 const Home = () => {
   const dispatch = useDispatch();
