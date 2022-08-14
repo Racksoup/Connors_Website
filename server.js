@@ -13,6 +13,8 @@ app.use(express.json({ extend: false }));
 
 // routes
 app.use('/api/admin', require('./routes/api/admin'));
+app.use('/api/lists', require('./routes/api/lists'));
+app.use('/api/listItem', require('./routes/api/listItem'));
 
 // production
 if (process.env.NODE_ENV === 'production') {

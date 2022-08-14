@@ -20,7 +20,7 @@ const AdminLogin = () => {
   };
 
   if (isAuthenticated) {
-    return <Navigate to='/admin-dashboard' />;
+    return <Navigate to='/' />;
   }
 
   return (
