@@ -135,5 +135,4 @@ export const {
   deletedListItem,
   updatedListItem,
 } = listsSlice.actions;
-
 export default listsSlice.reducer;

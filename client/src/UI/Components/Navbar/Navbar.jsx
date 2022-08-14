@@ -13,8 +13,14 @@ const Navbar = () => {
   if (auth && !loading) {
     return (
       <div className='Navbar'>
+        <Link className='Btn' to='/'>
+          Home
+        </Link>
         <Link className='Btn' to='/lists'>
           Lists
+        </Link>
+        <Link className='Btn' to='/weather'>
+          Weather
         </Link>
       </div>
     );
