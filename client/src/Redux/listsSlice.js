@@ -73,7 +73,7 @@ export const getLists = () => async (dispatch) => {
 
 export const deleteList = (id) => async (dispatch) => {
   try {
-    const res = await axios.delete(`api/lists/${id}`);
+    const res = await axios.delete(`/api/lists/${id}`);
     dispatch(deletedList(res.data));
   } catch (error) {
     console.log(error);
@@ -82,7 +82,7 @@ export const deleteList = (id) => async (dispatch) => {
 
 export const updateList = (list) => async (dispatch) => {
   try {
-    const res = await axios.put(`api/lists/${list._id}`, list);
+    const res = await axios.put(`/api/lists/${list._id}`, list);
     dispatch(updatedList(res.data));
   } catch (error) {
     console.log(error);
@@ -91,7 +91,7 @@ export const updateList = (list) => async (dispatch) => {
 
 export const createListItem = (item) => async (dispatch) => {
   try {
-    const res = await axios.post('api/listItem', item);
+    const res = await axios.post('/api/listItem', item);
     dispatch(createdListItem(res.data));
   } catch (error) {
     console.log(error);
@@ -100,7 +100,7 @@ export const createListItem = (item) => async (dispatch) => {
 
 export const getList = (listId) => async (dispatch) => {
   try {
-    const res = await axios.get(`api/listItem/${listId}`);
+    const res = await axios.get(`/api/listItem/${listId}`);
     dispatch(gotList(res.data));
   } catch (error) {
     console.log(error);
@@ -109,7 +109,7 @@ export const getList = (listId) => async (dispatch) => {
 
 export const deleteListItem = (id) => async (dispatch) => {
   try {
-    const res = await axios.delete(`api/listItem/${id}`);
+    const res = await axios.delete(`/api/listItem/${id}`);
     dispatch(deletedListItem(res.data));
   } catch (error) {
     console.log(error);
@@ -118,7 +118,7 @@ export const deleteListItem = (id) => async (dispatch) => {
 
 export const updateListItem = (item) => async (dispatch) => {
   try {
-    const res = await axios.put(`api/listItem/${item._id}`, item);
+    const res = await axios.put(`/api/listItem/${item._id}`, item);
     dispatch(updatedListItem(res.data));
   } catch (error) {
     console.log(error);
