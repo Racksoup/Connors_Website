@@ -3,13 +3,14 @@ import './Navbar.scss';
 
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectIsAuthenticated } from '../../../Redux/adminSlice';
+import { selectIsAuthenticated, selectLoading } from '../../../Redux/adminSlice';
 
 const Navbar = () => {
   const dispatch = useDispatch();
   const auth = useSelector(selectIsAuthenticated);
+  const loading = useSelector(selectLoading);
 
-  if (auth) {
+  if (auth && !loading) {
     return (
       <div className='Navbar'>
         <Link className='Btn' to='/lists'>

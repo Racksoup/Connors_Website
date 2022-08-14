@@ -53,18 +53,6 @@ export const listsSlice = createSlice({
   },
 });
 
-export const {
-  createdList,
-  gotLists,
-  deletedList,
-  updatedList,
-  createdListItem,
-  gotList,
-  deletedListItem,
-  updatedListItem,
-} = listsSlice.actions;
-export default listsSlice.reducer;
-
 export const createList = (list) => async (dispatch) => {
   try {
     const res = await axios.post('api/lists', list);
@@ -74,7 +62,7 @@ export const createList = (list) => async (dispatch) => {
   }
 };
 
-export const getLists = () => async (dipatch) => {
+export const getLists = () => async (dispatch) => {
   try {
     const res = await axios.get('api/lists');
     dispatch(gotLists(res.data));
@@ -83,7 +71,7 @@ export const getLists = () => async (dipatch) => {
   }
 };
 
-export const deleteList = (id) => async (dipatch) => {
+export const deleteList = (id) => async (dispatch) => {
   try {
     const res = await axios.delete(`api/lists/${id}`);
     dispatch(deletedList(res.data));
@@ -113,6 +101,7 @@ export const createListItem = (item) => async (dispatch) => {
 export const getList = (listId) => async (dispatch) => {
   try {
     const res = await axios.get(`api/listItem/${listId}`);
+    console.log(res.data);
     dispatch(gotList(res.data));
   } catch (error) {
     console.log(error);
@@ -136,3 +125,16 @@ export const updateListItem = (item) => async (dispatch) => {
     console.log(error);
   }
 };
+
+export const {
+  createdList,
+  gotLists,
+  deletedList,
+  updatedList,
+  createdListItem,
+  gotList,
+  deletedListItem,
+  updatedListItem,
+} = listsSlice.actions;
+
+export default listsSlice.reducer;
