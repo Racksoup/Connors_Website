@@ -101,7 +101,6 @@ export const createListItem = (item) => async (dispatch) => {
 export const getList = (listId) => async (dispatch) => {
   try {
     const res = await axios.get(`api/listItem/${listId}`);
-    console.log(res.data);
     dispatch(gotList(res.data));
   } catch (error) {
     console.log(error);
@@ -111,7 +110,7 @@ export const getList = (listId) => async (dispatch) => {
 export const deleteListItem = (id) => async (dispatch) => {
   try {
     const res = await axios.delete(`api/listItem/${id}`);
-    dispatch(deleteListItem(res.data));
+    dispatch(deletedListItem(res.data));
   } catch (error) {
     console.log(error);
   }

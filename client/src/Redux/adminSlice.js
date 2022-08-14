@@ -2,7 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
 
 const initialState = {
-  token: localStorage.getItem('token'),
+  token: localStorage.getItem('adminToken'),
   isAuthenticated: null,
   loading: true,
   admin: null,

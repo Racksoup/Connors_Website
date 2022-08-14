@@ -23,6 +23,7 @@
   .Title {
     padding: 0;
     margin: 1rem 0 0 0;
+    color: black;
   }
 
   .Input {
@@ -33,6 +34,7 @@
     border-radius: 0.5rem;
     border: solid 0.1rem rgba(0, 0, 0, 0.4);
     padding: 0 0 0 1rem;
+    color: black;
 
     &:focus {
       border: solid 0.2rem rgb(255, 115, 0);

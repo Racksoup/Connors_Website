@@ -1,12 +1,15 @@
 import React, { useState } from 'react';
 import './Modal.scss';
 
+import { useDispatch } from 'react-redux';
+
 const Modal = ({ toggleModal, createListFunc, initState, title, resize }) => {
   const [item, setItem] = useState(initState);
+  const dispatch = useDispatch();
 
   const submitClicked = (e) => {
     e.stopPropagation();
-    createListFunc(item);
+    dispatch(createListFunc(item));
     toggleModal(false);
   };
 
