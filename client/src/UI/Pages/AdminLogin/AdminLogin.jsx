@@ -25,7 +25,7 @@ const AdminLogin = () => {
 
   return (
     <div className='AdminLogin'>
-      <h1 className='Title'>AdminLogin</h1>
+      <h1 className='Title'>Login</h1>
       <form className='Form' onSubmit={(e) => submitForm(e)}>
         <label htmlFor='' className='Label'>
           Username
