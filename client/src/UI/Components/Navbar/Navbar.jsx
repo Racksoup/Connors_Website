@@ -22,6 +22,9 @@ const Navbar = () => {
         <Link className='Btn' to='/weather'>
           Weather
         </Link>
+        <Link className='Btn' to='/calendar'>
+          Calendar
+        </Link>
       </div>
     );
   } else {
