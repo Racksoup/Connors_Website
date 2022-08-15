@@ -1,5 +1,5 @@
 import React from 'react';
-import './calendar.scss';
+import './Calendar.scss';
 
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';

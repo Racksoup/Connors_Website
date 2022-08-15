@@ -47,8 +47,6 @@ const Calendar = () => {
   const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
   const currentMonth = monthsOfYear[dateValue.getMonth()];
   const currentYear = dateValue.getFullYear();
-  let firstDay = findFirstDayOfMonth(dateValue);
-  let daysOfMonth = buildMonthArr(firstDay);
 
   useEffect(() => {
     dispatch(getMonthsJournals(new Date()));
@@ -256,6 +254,9 @@ const Calendar = () => {
     setDateValue(newDate);
     toggleCalendarLayout(1);
   };
+
+  let firstDay = findFirstDayOfMonth(dateValue);
+  let daysOfMonth = buildMonthArr(firstDay);
 
   // Calendar Layout Main
   if (calendarLayout == 0) {
