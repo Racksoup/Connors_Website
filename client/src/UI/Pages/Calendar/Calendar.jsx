@@ -91,6 +91,8 @@ const Calendar = () => {
       let thisDaysDate;
       if (firstDay[2] === 10 || firstDay[2] === 11) {
         thisDaysDate = new Date(`${firstDay[5]}-${firstDay[2]}-${i}T05:00:00`);
+      } else if (firstDay[2] === 0) {
+        thisDaysDate = new Date(`${firstDay[5]}-12-${i}T05:00:00`);
       } else {
         thisDaysDate = new Date(`${firstDay[5]}-0${firstDay[2]}-${i}T05:00:00`);
       }
@@ -126,7 +128,7 @@ const Calendar = () => {
       if (firstDay[2] === 9 || firstDay[2] === 10) {
         thisDaysDate = new Date(`${firstDay[5]}-${firstDay[2] + 1}-${x}T05:00:00`);
       } else if (firstDay[2] === 11) {
-        thisDaysDate = new Date(`${firstDay[5]}-${firstDay[2] - 10}-${x}T05:00:00`);
+        thisDaysDate = new Date(`${firstDay[5]}-${firstDay[2] + 1}-${x}T05:00:00`);
       } else {
         thisDaysDate = new Date(`${firstDay[5]}-0${firstDay[2] + 1}-${x}T05:00:00`);
       }
@@ -161,10 +163,10 @@ const Calendar = () => {
       }
 
       let thisDaysDate;
-      if (firstDay[2] === 8 || firstDay[2] === 9) {
+      if (firstDay[2] === 8 || firstDay[2] === 9 || firstDay[2] === 10) {
         thisDaysDate = new Date(`${firstDay[5]}-${firstDay[2] + 2}-${x}T05:00:00`);
-      } else if (firstDay[2] === 10 || firstDay[2] === 11) {
-        thisDaysDate = new Date(`${firstDay[5]}-${firstDay[2] - 10}-${x}T05:00:00`);
+      } else if (firstDay[2] === 11) {
+        thisDaysDate = new Date(`${firstDay[5]}-0${firstDay[2] - 10}-${x}T05:00:00`);
       } else {
         thisDaysDate = new Date(`${firstDay[5]}-0${firstDay[2] + 2}-${x}T05:00:00`);
       }
@@ -197,6 +199,7 @@ const Calendar = () => {
     currDate.setMonth(currDate.getMonth() - 1);
     currDate.setDate(1);
     setDateValue(currDate);
+    dispatch(getMonthsJournals(dateValue));
   };
 
   const rightMonthButtonClicked = () => {
@@ -204,6 +207,7 @@ const Calendar = () => {
     currDate.setMonth(currDate.getMonth() + 1);
     currDate.setDate(1);
     setDateValue(currDate);
+    dispatch(getMonthsJournals(dateValue));
   };
 
   const leftYearButtonClicked = () => {

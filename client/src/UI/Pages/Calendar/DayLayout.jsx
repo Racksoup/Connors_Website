@@ -42,7 +42,10 @@ const DayLayout = ({
             return (
               <div
                 className='Day'
-                onClick={() => todayClicked(journals[day.journalIndex], day.thisDaysDate)}
+                onClick={() => {
+                  todayClicked(journals[day.journalIndex], day.thisDaysDate);
+                  console.log(day.thisDaysDate);
+                }}
               >
                 <Link to='/journal-view' className='Link'>
                   <div className='Content'>
