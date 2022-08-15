@@ -13,8 +13,13 @@
   .Nav {
     display: flex;
     width: 30rem;
+    flex-wrap: wrap;
     justify-content: space-between;
     margin: 1rem 0;
+
+    @media (max-width: 1000px) {
+      width: auto;
+    }
 
     .Btn {
       height: 3rem;
