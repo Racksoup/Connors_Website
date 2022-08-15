@@ -1,10 +1,9 @@
 const JournalPost = require('../../models/JournalPost');
-const Auth = require('../../middleware/adminAuth');
+const adminAuth = require('../../middleware/adminAuth');
 
 const express = require('express');
 const router = express.Router();
 const { GridFsStorage } = require('multer-gridfs-storage');
-const Grid = require('gridfs-stream');
 const multer = require('multer');
 const crypto = require('crypto');
 const path = require('path');
@@ -48,7 +47,7 @@ connect.once('open', () => {
 // ========================
 
 // Create Journal Post
-router.post('/', [Auth, upload.single('file')], async (req, res) => {
+router.post('/', [adminAuth, upload.single('file')], async (req, res) => {
   const { title, text, date } = req.body;
 
   const postItem = {};
@@ -72,7 +71,7 @@ router.post('/', [Auth, upload.single('file')], async (req, res) => {
 });
 
 // Update Journal Entry
-router.put('/:_id', Auth, async (req, res) => {
+router.put('/:_id', adminAuth, async (req, res) => {
   const { title, date, text, image_filename } = req.body;
   const postItem = {};
   if (title) postItem.title = title;
@@ -91,10 +90,10 @@ router.put('/:_id', Auth, async (req, res) => {
 });
 
 // Delete Journal Entry
-router.delete('/:_id', Auth, async (req, res) => {
+router.delete('/:_id', adminAuth, async (req, res) => {
   try {
     await JournalPost.findOneAndRemove({ _id: req.params._id });
-    gfs.remove({ _id: req.params._id, root: 'journalImages' }, (err, GridFSBucket) => {
+    journalBucket.remove({ _id: req.params._id, root: 'journalImages' }, (err, GridFSBucket) => {
       if (err) {
         return res.status(404).json({ err: err });
       }
@@ -107,7 +106,7 @@ router.delete('/:_id', Auth, async (req, res) => {
 });
 
 // Get All Journal Entries
-router.get('/', Auth, async (req, res) => {
+router.get('/', adminAuth, async (req, res) => {
   try {
     const items = await JournalPost.find();
     res.json(items);
@@ -118,7 +117,7 @@ router.get('/', Auth, async (req, res) => {
 });
 
 // Get One Journal Entry
-router.get('/:_id', Auth, async (req, res) => {
+router.get('/:_id', adminAuth, async (req, res) => {
   try {
     const item = await JournalPost.findById(req.params._id);
     res.json(item);
@@ -129,7 +128,7 @@ router.get('/:_id', Auth, async (req, res) => {
 });
 
 // Get One Journal Entry By Date
-router.get('/date/:date', Auth, async (req, res) => {
+router.get('/date/:date', adminAuth, async (req, res) => {
   try {
     const item = await JournalPost.findOne({ date: req.params.date });
     res.json(item);
@@ -140,7 +139,7 @@ router.get('/date/:date', Auth, async (req, res) => {
 });
 
 //  Get Journal Entries By Month, 3 months of data (prevMonth, currMonth, nextMonth)
-router.get('/month/:year/:month', Auth, async (req, res) => {
+router.get('/month/:year/:month', adminAuth, async (req, res) => {
   try {
     let nextMonth = parseInt(req.params.month) + 1;
     if (nextMonth < 10) {
@@ -171,24 +170,39 @@ router.get('/month/:year/:month', Auth, async (req, res) => {
 
 // Get Journal Image
 router.get('/image/:filename', async (req, res) => {
-  await gfs.files.findOne({ filename: req.params.filename }, (err, file) => {
-    // Check if files
-    if (!file || file.length === 0) {
-      return res.status(404).json({
-        err: 'No Files Exist',
+  journalBucket.find({ filename: req.params.filename }).toArray((err, files) => {
+    if (!files[0] || files.length === 0) {
+      return res.status(200).json({
+        success: false,
+        message: 'No files available',
       });
     }
-    // Check if image
-    if (file.contentType === 'image/jpeg' || file.contentType === 'image/png') {
-      // Read output to browser
-      const readstream = gfs.createReadStream(file.filename);
-      readstream.pipe(res);
+
+    if (files[0].contentType === 'image/png' || files[0].contentType === 'image/jpeg') {
+      journalBucket.openDownloadStreamByName(req.params.filename).pipe(res);
     } else {
       res.status(404).json({
-        err: 'Not jpeg or pgn Image',
+        err: 'Not an image',
       });
     }
   });
+});
+
+// Delete Image
+router.delete('/image/:filename', adminAuth, async (req, res) => {
+  try {
+    const img = await journalBucket.find({ filename: req.params.filename }).toArray();
+    await journalBucket.delete(img[0]._id);
+    res.json(img);
+  } catch (error) {
+    console.error(error.message);
+    res.status(500).send;
+  }
+});
+
+// Post Image
+router.post('/image', [adminAuth, upload.single('file')], async (req, res) => {
+  res.json(req.file);
 });
 
 module.exports = router;

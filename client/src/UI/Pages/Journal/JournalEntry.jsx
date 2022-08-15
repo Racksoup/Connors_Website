@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useRef } from 'react';
 import './JournalEntry.scss';
 import {
   createJournalPost,
@@ -9,7 +9,7 @@ import {
 import { selectIsAuthenticated, selectLoading } from '../../../Redux/adminSlice';
 
 import { useDispatch, useSelector } from 'react-redux';
-import { Navigate } from 'react-router-dom';
+import { Navigate, Link } from 'react-router-dom';
 
 const JournalEntry = () => {
   const dispatch = useDispatch();
@@ -39,15 +39,15 @@ const JournalEntry = () => {
   const onSubmit = (e) => {
     e.preventDefault();
 
-    if (!journal) {
+    if (!journal.title && !journal.text && !journal._id) {
       if (title !== '' && text !== '' && newFile !== '') {
-        createJournalPost(newJournal, newFile);
-        setRedirect(true);
+        dispatch(createJournalPost(newJournal, newFile));
+        //setRedirect(true);
       }
     } else {
       setNewJournal({ ...newJournal, id: journal._id });
-      updateJournalPost(newJournal, newFile);
-      setRedirect(true);
+      dispatch(updateJournalPost(newJournal, newFile));
+      //setRedirect(true);
     }
   };
 
@@ -56,19 +56,19 @@ const JournalEntry = () => {
   };
 
   if (redirect) {
-    return <Navigate to='/home' />;
+    return <Navigate to='/calendar' />;
   }
 
   if (!isAuthenticated && !loading) {
-    return <Navigate to='/' />;
+    return <Navigate to='/admin-login' />;
   }
 
   if (journal) {
     return (
       <div className='JournalEntry'>
         <div className='TitleBox'>
-          <Link className='Link' to='/home'>
-            <div className='Btn' onClick={() => clearJournal()}>
+          <Link className='Link' to='/calendar'>
+            <div className='Btn' onClick={() => dispatch(clearJournal())}>
               Back
             </div>
           </Link>
@@ -104,13 +104,13 @@ const JournalEntry = () => {
               <img className='PictureFrame' src={`api/journal/image/${journal.image_filename}`} />
             )}
           </div>
-          <Textarea
+          <textarea
             className='Input'
             type='text'
             name='text'
             value={text}
             onChange={(e) => onChange(e)}
-          ></Textarea>
+          ></textarea>
         </div>
       </div>
     );

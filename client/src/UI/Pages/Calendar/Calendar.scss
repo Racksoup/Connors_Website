@@ -91,8 +91,7 @@
       overflow: hidden;
 
       &:hover {
-        border: solid rgba(255, 115, 0, 0.637) 0.2rem;
-        border-radius: 0.7rem;
+        border: solid rgba(255, 115, 0, 0.637) 0.1rem;
       }
 
       .Content {
@@ -104,6 +103,7 @@
         display: inline-flex;
         align-items: flex-start;
         color: white;
+        font-size: 1.6rem;
 
         .Img {
           width: 100%;
@@ -117,11 +117,15 @@
           .Num {
             width: 2rem;
             margin: 0 0 0.1rem 0;
+            text-shadow: 3px 3px 3px black;
           }
 
           .Title {
             width: 100%;
+            font-size: 1.2rem;
             text-align: center;
+            -webkit-text-stroke-width: 0.5px;
+            -webkit-text-stroke-color: black;
           }
         }
       }

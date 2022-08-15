@@ -2,10 +2,11 @@ import React from 'react';
 import './JournalView.scss';
 import { clearJournal, selectJournal } from '../../../Redux/calendarSlice';
 
-import { useSelector } from 'react-redux';
-import { Navigate } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { Navigate, Link } from 'react-router-dom';
 
 const JournalView = () => {
+  const dispatch = useDispatch();
   const journal = useSelector(selectJournal);
 
   if (journal.title === '') {
@@ -19,13 +20,13 @@ const JournalView = () => {
   return (
     <div className='JournalView'>
       <div className='TitleBox'>
-        <Link to='home' className='Link'>
-          <div className='Btn' onClick={() => clearJournal()}>
+        <Link to='/calendar' className='Link'>
+          <div className='Btn' onClick={() => dispatch(clearJournal())}>
             Back
           </div>
         </Link>
         <p className='Title'>{journal.title}</p>
-        <Link to='journal-entry' className='Link'>
+        <Link to='/journal-entry' className='Link'>
           <div className='Btn'>Edit</div>
         </Link>
       </div>

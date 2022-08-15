@@ -189,7 +189,7 @@ const Calendar = () => {
   };
 
   const todayClicked = (journal, date) => {
-    getOneJournalByDate(journal, date);
+    dispatch(getOneJournalByDate(journal, date));
   };
 
   const leftMonthButtonClicked = () => {
