@@ -1,5 +1,260 @@
 @import '../../../App.scss';
 
 .Calendar {
-  @include Section;
+  border-color: cyan;
+  border-style: solid;
+  border-radius: 20px;
+  width: 60rem;
+  height: 44rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .TitleBox {
+    display: flex;
+    align-items: center;
+
+    .Title {
+      display: inline;
+      text-align: center;
+      font-size: 2.5rem;
+      padding: 0rem;
+      margin: 0rem;
+      width: 20rem;
+      cursor: pointer;
+      &:hover {
+        color: rgb(255, 123, 0);
+      }
+
+      &-Month {
+        cursor: pointer;
+        display: inline;
+        text-align: center;
+        padding: 0rem;
+        margin: 0rem;
+        font-size: 2rem;
+        width: 11rem;
+        &:hover {
+          color: rgb(255, 123, 0);
+        }
+      }
+
+      &-Year {
+        cursor: pointer;
+        display: inline;
+        text-align: center;
+        font-size: 2rem;
+        padding: 0rem;
+        margin: 0rem;
+        width: 11rem;
+        &:hover {
+          color: rgb(255, 123, 0);
+        }
+      }
+    }
+
+    .MonthNavBtn {
+      display: inline-block;
+      margin: 0rem 2rem 0rem 2rem;
+      cursor: pointer;
+      padding: 1rem;
+
+      &:hover {
+        color: rgba(255, 115, 0, 1);
+      }
+    }
+  }
+
+  .Grid {
+    width: 60rem;
+    padding: 0.5rem;
+    height: 40rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 4fr 4fr 4fr 4fr 4fr 4fr;
+    overflow: hidden;
+
+    .DayOfWeek {
+      border-radius: 0.1rem;
+      border: solid white;
+      text-align: center;
+      font-size: 0.8rem;
+      height: 100%;
+    }
+
+    .Day {
+      border-radius: 0.1rem;
+      border: solid rgba(255, 255, 255, 0.116) 0.01rem;
+      padding: 0px;
+      margin: 0px;
+      overflow: hidden;
+
+      &:hover {
+        border: solid rgba(255, 115, 0, 0.637) 0.2rem;
+        border-radius: 0.7rem;
+      }
+
+      .Content {
+        background-color: rgba(0, 0, 0, 0);
+        border-style: none;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        display: inline-flex;
+        align-items: flex-start;
+        color: white;
+
+        .Img {
+          width: 100%;
+          height: 100%;
+        }
+
+        .Overlay {
+          position: absolute;
+          width: 8rem;
+
+          .Num {
+            width: 2rem;
+            margin: 0 0 0.1rem 0;
+          }
+
+          .Title {
+            width: 100%;
+            text-align: center;
+          }
+        }
+      }
+    }
+
+    &-Month {
+      width: 60rem;
+      padding: 0.5rem;
+      height: 40rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+      grid-template-rows: 1fr 1fr 1fr;
+      overflow: hidden;
+
+      .Month {
+        width: 100%;
+        border-radius: 0.1rem;
+        border: solid rgba(255, 255, 255, 0.116) 0.01rem;
+        padding: 0px;
+        margin: 0px;
+        font-size: 2.2rem;
+        overflow: hidden;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        cursor: pointer;
+
+        &:hover {
+          color: rgb(255, 115, 0);
+          border: solid rgba(255, 115, 0, 0.637) 0.2rem;
+          border-radius: 0.7rem;
+        }
+      }
+    }
+
+    &-Year {
+      width: 60rem;
+      padding: 0.5rem;
+      height: 40rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+      grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+      justify-items: stretch;
+      align-items: stretch;
+
+      .Item {
+        border-radius: 0.1rem;
+        border: solid rgba(255, 255, 255, 0.116) 0.01rem;
+        padding: 0px;
+        margin: 0px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.3rem;
+        font-weight: 400;
+        cursor: pointer;
+
+        &:hover {
+          border: solid rgba(255, 115, 0, 0.637) 0.2rem;
+          color: rgba(255, 115, 0);
+          border-radius: 0.6rem;
+        }
+      }
+    }
+  }
+}
+
+.Calendar-TitleGrid {
+  display: grid;
+  grid-template-columns: 1fr 12rem 1fr;
+  grid-template-rows: 1fr;
+  align-items: center;
+  justify-items: center;
+}
+
+.Calendar-Title-YearLayout {
+}
+
+@media screen and (max-width: 650px) {
+  .Calendar-MainWin {
+    width: 320px;
+    height: 400px;
+  }
+
+  .Calendar-Grid {
+    width: 320px;
+    height: 400px;
+  }
+
+  .Calendar-Item-Img {
+    display: none;
+    visibility: hidden;
+  }
+
+  .Calendar-Item-Title {
+    visibility: hidden;
+  }
+
+  .CalendarDayTitle {
+    display: hidden;
+    visibility: hidden;
+    width: 0;
+  }
+
+  .Calendar-TitleGrid {
+    width: 320px;
+  }
+
+  .Calendar-Title-MonthFlex {
+    width: 320px;
+  }
+
+  .Calendar-Title {
+    font-size: 1rem;
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .Calendar-MainWin {
+    width: 650px;
+    height: 750px;
+  }
+
+  .Calendar-Grid {
+    width: 650px;
+    height: 750px;
+  }
+
+  .Calendar-TitleGrid {
+    width: 650px;
+  }
+
+  .Calendar-Title-MonthFlex {
+    width: 650px;
+  }
 }
