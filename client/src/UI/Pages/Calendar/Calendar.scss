@@ -11,6 +11,10 @@
   flex-direction: column;
   align-items: center;
 
+  @media (max-width: 1000px) {
+    width: 98%;
+  }
+
   .TitleBox {
     display: flex;
     align-items: center;
@@ -25,6 +29,13 @@
       cursor: pointer;
       &:hover {
         color: rgb(255, 123, 0);
+      }
+
+      @media (max-width: 1000px) {
+        max-width: 14rem;
+      }
+      @media (max-width: 450px) {
+        max-width: 10rem;
       }
 
       &-Month {
@@ -60,6 +71,10 @@
       cursor: pointer;
       padding: 1rem;
 
+      @media (max-width: 450px) {
+        margin: 0 1rem;
+      }
+
       &:hover {
         color: rgba(255, 115, 0, 1);
       }
@@ -74,6 +89,10 @@
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
     grid-template-rows: 1fr 4fr 4fr 4fr 4fr 4fr 4fr;
     overflow: hidden;
+
+    @media (max-width: 1000px) {
+      width: 98%;
+    }
 
     .DayOfWeek {
       border-radius: 0.1rem;
@@ -112,7 +131,7 @@
 
         .Overlay {
           position: absolute;
-          width: 8rem;
+          max-width: 8rem;
 
           .Num {
             width: 2rem;
@@ -126,6 +145,10 @@
             text-align: center;
             -webkit-text-stroke-width: 0.5px;
             -webkit-text-stroke-color: black;
+
+            @media (max-width: 1000px) {
+              display: none;
+            }
           }
         }
       }
@@ -203,63 +226,4 @@
 }
 
 .Calendar-Title-YearLayout {
-}
-
-@media screen and (max-width: 650px) {
-  .Calendar-MainWin {
-    width: 320px;
-    height: 400px;
-  }
-
-  .Calendar-Grid {
-    width: 320px;
-    height: 400px;
-  }
-
-  .Calendar-Item-Img {
-    display: none;
-    visibility: hidden;
-  }
-
-  .Calendar-Item-Title {
-    visibility: hidden;
-  }
-
-  .CalendarDayTitle {
-    display: hidden;
-    visibility: hidden;
-    width: 0;
-  }
-
-  .Calendar-TitleGrid {
-    width: 320px;
-  }
-
-  .Calendar-Title-MonthFlex {
-    width: 320px;
-  }
-
-  .Calendar-Title {
-    font-size: 1rem;
-  }
-}
-
-@media screen and (max-width: 1000px) {
-  .Calendar-MainWin {
-    width: 650px;
-    height: 750px;
-  }
-
-  .Calendar-Grid {
-    width: 650px;
-    height: 750px;
-  }
-
-  .Calendar-TitleGrid {
-    width: 650px;
-  }
-
-  .Calendar-Title-MonthFlex {
-    width: 650px;
-  }
 }
