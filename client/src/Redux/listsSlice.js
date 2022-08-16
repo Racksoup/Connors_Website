@@ -56,7 +56,7 @@ export const listsSlice = createSlice({
 export const createList = (list) => async (dispatch) => {
   try {
     const res = await axios.post('api/lists', list);
-    dispatch(createList(res.data));
+    dispatch(createdList(res.data));
   } catch (error) {
     console.log(error);
   }
