@@ -17,6 +17,7 @@ app.use('/api/lists', require('./routes/api/lists'));
 app.use('/api/listItem', require('./routes/api/listItem'));
 app.use('/api/weather', require('./routes/api/weather'));
 app.use('/api/journal', require('./routes/api/journal'));
+app.use('/api/news', require('./routes/api/news'));
 
 // production
 if (process.env.NODE_ENV === 'production') {
