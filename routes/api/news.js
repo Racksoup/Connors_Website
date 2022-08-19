@@ -7,6 +7,7 @@ const router = express.Router();
 const axios = require('axios');
 const { Translate } = require('@google-cloud/translate').v2;
 const translate = new Translate({ projectId: translateID });
+const wiki = require('wikipedia');
 
 router.get('/fr', adminAuth, async (req, res) => {
   try {
@@ -33,5 +34,37 @@ router.post('/en', async (req, res) => {
     console.log(error);
   }
 });
+
+router.get('/wiki/random', adminAuth, async (req, res) => {
+  try {
+    const wikiPage = await axios.get(
+      `https://en.wikipedia.org/w/api.php?format=json&action=query&generator=random&grnnamespace=0&prop=revisions&rvprop=content&grnlimit=1`
+    );
+
+    let pageNum;
+    for (let x in wikiPage.data.query.pages) {
+      pageNum = x;
+    }
+    const queryTitle = wikiPage.data.query.pages[pageNum].title;
+
+    const article = await wiki.page(queryTitle);
+    const content = await article.content();
+    console.log(content);
+    res.json(content);
+  } catch (error) {
+    console.log(error.message);
+  }
+});
+
+// router.get('/wiki/random', adminAuth, async (req, res) => {
+//   try {
+//     const wikiPage = await axios.get(
+//       `https://en.wikipedia.org/w/api.php?format=json&action=query&generator=random&rvslots=*&grnnamespace=0&prop=revisions&rvprop=content&grnlimit=1`
+//     );
+//     res.json(article.data);
+//   } catch (error) {
+//     console.log(error.message);
+//   }
+// });
 
 module.exports = router;
