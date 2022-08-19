@@ -4,20 +4,28 @@ import './Home.scss';
 import { Navigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { loadAdmin, selectIsAuthenticated } from '../../../Redux/adminSlice';
-import { getNews, selectNews } from '../../../Redux/newsSlice';
+import { getNews, getTranslation, selectEnglish, selectFrench } from '../../../Redux/newsSlice';
 import { useEffect } from 'react';
 
 const Home = () => {
   const dispatch = useDispatch();
-  const news = useSelector(selectNews);
+  const french = useSelector(selectFrench);
+  const english = useSelector(selectEnglish);
   const auth = useSelector(selectIsAuthenticated);
 
   useEffect(() => {
     dispatch(getNews());
   }, []);
 
-  if (news) {
-    console.log(news);
+  useEffect(() => {
+    if (french.data) {
+      const article = { title: french.data[0].title, description: french.data[0].description };
+      dispatch(getTranslation(article));
+    }
+  }, [french]);
+
+  if (french.data) {
+    console.log(french);
   }
 
   if (!auth) {
@@ -25,16 +33,18 @@ const Home = () => {
   } else {
     return (
       <div className='Home'>
-        {news.data && (
+        {french.data && (
           <div className='News'>
             <div className='Side'>
-              <h2>{news.data[0].title}</h2>
-              <p>{news.data[0].description}</p>
+              <h2>{french.data[0].title}</h2>
+              <p>{french.data[0].description}</p>
             </div>
-            <div className='Side'>
-              <h2>{news.data[1].title}</h2>
-              <p>{news.data[1].description}</p>
-            </div>
+            {english && (
+              <div className='Side'>
+                <h2>{english.title}</h2>
+                <p>{english.description}</p>
+              </div>
+            )}
           </div>
         )}
       </div>

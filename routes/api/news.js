@@ -8,7 +8,7 @@ const axios = require('axios');
 const { Translate } = require('@google-cloud/translate').v2;
 const translate = new Translate({ projectId: translateID });
 
-router.get('/', adminAuth, async (req, res) => {
+router.get('/fr', adminAuth, async (req, res) => {
   try {
     const news = await axios.get(
       `https://api.thenewsapi.com/v1/news/top?api_token=${token}&language=fr`
@@ -19,14 +19,16 @@ router.get('/', adminAuth, async (req, res) => {
   }
 });
 
-router.get('/en', async (req, res) => {
+router.post('/en', async (req, res) => {
   try {
-    const { text } = req.body;
+    const { title, description } = req.body;
     const target = 'en';
 
-    const [translation] = await translate.translate(text, target);
+    const [translationTitle] = await translate.translate(title, target);
+    const [translationDesc] = await translate.translate(description, target);
 
-    res.json(translation);
+    const returnItem = { title: translationTitle, description: translationDesc };
+    res.json(returnItem);
   } catch (error) {
     console.log(error);
   }
