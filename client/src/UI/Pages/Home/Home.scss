@@ -12,6 +12,7 @@
       width: 25rem;
       border-radius: 1rem;
       border: solid grey 0.05rem;
+      margin: 1rem 0.5rem;
 
       h2 {
         font-size: 1.4rem;
@@ -21,6 +22,21 @@
       p {
         font-size: 0.9rem;
         text-align: center;
+        max-height: 30rem;
+        overflow-y: scroll;
+        padding: 0.5rem;
+      }
+    }
+
+    @media (max-width: 1000px) {
+      width: 100%;
+    }
+
+    @media (max-width: 800px) {
+      flex-direction: column;
+
+      .Side {
+        width: 100%;
       }
     }
   }

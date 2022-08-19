@@ -4,7 +4,12 @@ import './Home.scss';
 import { Navigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { loadAdmin, selectIsAuthenticated } from '../../../Redux/adminSlice';
-import { getNews, getTranslation, selectEnglish, selectFrench } from '../../../Redux/newsSlice';
+import {
+  getRandomWiki,
+  getTranslation,
+  selectEnglish,
+  selectFrench,
+} from '../../../Redux/newsSlice';
 import { useEffect } from 'react';
 
 const Home = () => {
@@ -14,35 +19,31 @@ const Home = () => {
   const auth = useSelector(selectIsAuthenticated);
 
   useEffect(() => {
-    dispatch(getNews());
+    dispatch(getRandomWiki());
   }, []);
 
   useEffect(() => {
-    if (french.data) {
-      const article = { title: french.data[0].title, description: french.data[0].description };
+    if (english.title) {
+      const article = { title: english.title, content: english.content };
       dispatch(getTranslation(article));
     }
-  }, [french]);
-
-  if (french.data) {
-    console.log(french);
-  }
+  }, [english]);
 
   if (!auth) {
     return <Navigate to='/admin-login' />;
   } else {
     return (
       <div className='Home'>
-        {french.data && (
+        {french && (
           <div className='News'>
             <div className='Side'>
-              <h2>{french.data[0].title}</h2>
-              <p>{french.data[0].description}</p>
+              <h2>{french.title}</h2>
+              <p>{french.content}</p>
             </div>
             {english && (
               <div className='Side'>
                 <h2>{english.title}</h2>
-                <p>{english.description}</p>
+                <p>{english.content}</p>
               </div>
             )}
           </div>
