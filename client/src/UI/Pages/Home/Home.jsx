@@ -34,6 +34,9 @@ const Home = () => {
   } else {
     return (
       <div className='Home'>
+        <button className='Btn' onClick={() => dispatch(getRandomWiki())}>
+          New Article
+        </button>
         {french && (
           <div className='News'>
             <div className='Side'>

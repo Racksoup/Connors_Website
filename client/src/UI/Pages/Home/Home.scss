@@ -3,6 +3,10 @@
 .Home {
   @include Section;
 
+  .Btn {
+    margin: 1rem 0;
+  }
+
   .News {
     width: 60rem;
     display: flex;
