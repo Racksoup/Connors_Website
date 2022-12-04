@@ -4,7 +4,6 @@ import listsReducer from './listsSlice';
 import weatherReducer from './weatherSlice';
 import calendarReducer from './calendarSlice';
 import newsReducer from './newsSlice';
-import scheduleReducer from './scheduleSlice';
 
 export const store = configureStore({
   reducer: {
@@ -13,6 +12,5 @@ export const store = configureStore({
     weather: weatherReducer,
     calendar: calendarReducer,
     news: newsReducer,
-    schedule: scheduleReducer,
   },
 });

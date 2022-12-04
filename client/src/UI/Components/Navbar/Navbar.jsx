@@ -25,9 +25,6 @@ const Navbar = () => {
         <Link className='Btn' to='/calendar'>
           Calendar
         </Link>
-        <Link className='Btn' to='/schedule'>
-          Schedule
-        </Link>
       </div>
     );
   } else {
