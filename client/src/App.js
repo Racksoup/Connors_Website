@@ -10,6 +10,7 @@ import Weather from './UI/Pages/Weather/Weather.jsx';
 import Calendar from './UI/Pages/Calendar/Calendar.jsx';
 import JournalEntry from './UI/Pages/Journal/JournalEntry.jsx';
 import JournalView from './UI/Pages/Journal/JournalView.jsx';
+import Schedule from './UI/Pages/Schedule/Schedule.jsx';
 
 import { Route, Routes } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
@@ -34,6 +35,7 @@ const App = () => {
           <Route exact path='/calendar' element={<Calendar />} />
           <Route exact path='/journal-entry' element={<JournalEntry />} />
           <Route exact path='/journal-view' element={<JournalView />} />
+          <Route exact path='/schedule' element={<Schedule />} />
         </Routes>
         <Footer />
       </div>
