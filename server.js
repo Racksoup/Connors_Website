@@ -7,7 +7,7 @@ dotenv.config();
 
 const app = express();
 
-connectDB();
+// connectDB();
 
 app.use(express.json({ extend: false }));
 
@@ -19,7 +19,6 @@ app.use('/api/weather', require('./routes/api/weather'));
 app.use('/api/journal', require('./routes/api/journal'));
 app.use('/api/news', require('./routes/api/news'));
 app.use('/api/schedule', require('./routes/api/schedule'));
-
 
 // production
 if (process.env.NODE_ENV === 'production') {
