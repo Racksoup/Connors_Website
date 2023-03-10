@@ -13,6 +13,7 @@
 
   @media (max-width: 1000px) {
     width: 98%;
+    height: auto;
   }
 
   .TitleBox {
@@ -33,9 +34,11 @@
 
       @media (max-width: 1000px) {
         max-width: 14rem;
+        font-size: 1.9rem;
       }
       @media (max-width: 450px) {
         max-width: 10rem;
+        font-size: 1.7rem;
       }
 
       &-Month {
@@ -100,6 +103,7 @@
       text-align: center;
       font-size: 0.8rem;
       height: 100%;
+      min-width: 0;
     }
 
     .Day {
@@ -163,6 +167,10 @@
       grid-template-rows: 1fr 1fr 1fr;
       overflow: hidden;
 
+      @media (max-width: 1000px) {
+        width: auto;
+      }
+
       .Month {
         width: 100%;
         border-radius: 0.1rem;
@@ -182,6 +190,13 @@
           border: solid rgba(255, 115, 0, 0.637) 0.2rem;
           border-radius: 0.7rem;
         }
+
+        @media (max-width: 1000px) {
+          font-size: 1.8rem;
+        }
+        @media (max-width: 450px) {
+          font-size: 1.5rem;
+        }
       }
     }
 
@@ -195,6 +210,13 @@
       justify-items: stretch;
       align-items: stretch;
 
+      @media (max-width: 1000px) {
+        width: auto;
+        height: auto;
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+        grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+      }
+
       .Item {
         border-radius: 0.1rem;
         border: solid rgba(255, 255, 255, 0.116) 0.01rem;
@@ -206,6 +228,11 @@
         font-size: 1.3rem;
         font-weight: 400;
         cursor: pointer;
+
+        @media (max-width: 1000px) {
+          width: 3.3rem;
+          margin: 0.3rem;
+        }
 
         &:hover {
           border: solid rgba(255, 115, 0, 0.637) 0.2rem;
@@ -223,7 +250,4 @@
   grid-template-rows: 1fr;
   align-items: center;
   justify-items: center;
-}
-
-.Calendar-Title-YearLayout {
 }
