@@ -18,14 +18,19 @@
     width: 30rem;
     flex-wrap: wrap;
     justify-content: space-between;
-    margin: 1rem 0;
+    margin: 2rem 0 1rem 0;
 
     @media (max-width: 1000px) {
       width: auto;
+      justify-content: center;
     }
 
     .Btn {
-      height: 3rem;
+      height: 2.4rem;
+      background-color: rgb(135, 143, 255);
+      @media (max-width: 1000px) {
+        margin: 0.4rem;
+      }
     }
   }
 }

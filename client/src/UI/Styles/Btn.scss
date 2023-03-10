@@ -11,11 +11,10 @@
   align-items: center;
   justify-content: center;
   text-align: center;
-  border: solid 0.1rem black;
 
   &:hover {
-    border: none;
-    font-size: 1.1rem;
+    font-size: 1.05rem;
+    border: solid 0.1rem rgb(52, 225, 255);
   }
 }
 
