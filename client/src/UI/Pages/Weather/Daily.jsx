@@ -129,7 +129,7 @@ const Daily = () => {
 
               if (screenSize.dynamicWidth > 720) {
                 return (
-                  <tr style={{ color: 'white' }}>
+                  <tr style={{ color: 'white' }} key={i}>
                     <td>{day.theDay}</td>
                     <td>{(day.temp.max - 273.15).toFixed(1)}&#176;</td>
                     <td>{(day.temp.min - 273.15).toFixed(1)}&#176;</td>

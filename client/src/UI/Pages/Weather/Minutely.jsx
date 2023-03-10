@@ -29,7 +29,7 @@ const Minutely = () => {
             tagMin++;
             if (i !== 60) {
               return (
-                <div style={{ display: 'flex' }}>
+                <div style={{ display: 'flex' }} key={i}>
                   Min {tagMin}: {minute.precipitation}
                 </div>
               );

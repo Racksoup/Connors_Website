@@ -15,22 +15,15 @@
 
   .Nav {
     display: flex;
-    width: 30rem;
+    width: auto;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: center;
     margin: 2rem 0 1rem 0;
-
-    @media (max-width: 1000px) {
-      width: auto;
-      justify-content: center;
-    }
 
     .Btn {
       height: 2.4rem;
       background-color: rgb(135, 143, 255);
-      @media (max-width: 1000px) {
-        margin: 0.4rem;
-      }
+      margin: 0.4rem;
     }
   }
 }
@@ -88,4 +81,32 @@
 .Forecast-HourItem {
   width: 100%;
   display: flex;
+}
+
+.EightDay {
+  max-width: 40rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+
+  .Day {
+    margin: 0.8rem;
+    width: 7.3rem;
+    border: 0.1rem solid white;
+    border-radius: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    padding: 0.3rem;
+
+    .TempLine {
+      display: flex;
+
+      .Time {
+        width: 4rem;
+      }
+
+      .Temp {
+      }
+    }
+  }
 }

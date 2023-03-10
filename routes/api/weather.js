@@ -10,7 +10,7 @@ const router = express.Router();
 router.get('/', async (req, res) => {
   try {
     const forecast = await axios.get(
-      `https://api.openweathermap.org/data/2.5/forecast?q=Ottawa,ca&appid=${WeatherID}`
+      `https://api.openweathermap.org/data/2.5/forecast?lat=${Latitude}&lon=${Longitude}&appid=${WeatherID}`
     );
     res.json(forecast.data);
   } catch (err) {

@@ -104,9 +104,9 @@ const Forecast = () => {
         <div className='Forecast-DayFlex'>
           <h4>{dayForecast.day1 && dayForecast.day1[0].day}</h4>
           {dayForecast.day1 &&
-            dayForecast.day1.map((hour) => {
+            dayForecast.day1.map((hour, i) => {
               return (
-                <div className='Forecast-HourFlex'>
+                <div className='Forecast-HourFlex' key={i}>
                   <div className='Forecast-HourItem'>
                     <div>{hour.time}</div>
                     <div>{hour.tag}</div>
@@ -120,9 +120,9 @@ const Forecast = () => {
         <div className='Forecast-DayFlex'>
           <h4>{dayForecast.day2 && dayForecast.day2[0].day}</h4>
           {dayForecast.day2 &&
-            dayForecast.day2.map((hour) => {
+            dayForecast.day2.map((hour, i) => {
               return (
-                <div className='Forecast-HourFlex'>
+                <div className='Forecast-HourFlex' key={i}>
                   <div className='Forecast-HourItem'>
                     <div>{hour.time}</div>
                     <div>{hour.tag}</div>
@@ -136,9 +136,9 @@ const Forecast = () => {
         <div className='Forecast-DayFlex'>
           <h4>{dayForecast.day3 && dayForecast.day3[0].day}</h4>
           {dayForecast.day3 &&
-            dayForecast.day3.map((hour) => {
+            dayForecast.day3.map((hour, i) => {
               return (
-                <div className='Forecast-HourFlex'>
+                <div className='Forecast-HourFlex' key={i}>
                   <div className='Forecast-HourItem'>
                     <div>{hour.time}</div>
                     <div>{hour.tag}</div>
@@ -152,9 +152,9 @@ const Forecast = () => {
         <div className='Forecast-DayFlex'>
           <h4>{dayForecast.day4 && dayForecast.day4[0].day}</h4>
           {dayForecast.day4 &&
-            dayForecast.day4.map((hour) => {
+            dayForecast.day4.map((hour, i) => {
               return (
-                <div className='Forecast-HourFlex'>
+                <div className='Forecast-HourFlex' key={i}>
                   <div className='Forecast-HourItem'>
                     <div>{hour.time}</div>
                     <div>{hour.tag}</div>
@@ -168,9 +168,9 @@ const Forecast = () => {
         <div className='Forecast-DayFlex'>
           <h4>{dayForecast.day5 && dayForecast.day5[0].day}</h4>
           {dayForecast.day5 &&
-            dayForecast.day5.map((hour) => {
+            dayForecast.day5.map((hour, i) => {
               return (
-                <div className='Forecast-HourFlex'>
+                <div className='Forecast-HourFlex' key={i}>
                   <div className='Forecast-HourItem'>
                     <div>{hour.time}</div>
                     <div>{hour.tag}</div>
@@ -184,9 +184,9 @@ const Forecast = () => {
         <div className='Forecast-DayFlex'>
           <h4>{dayForecast.day6 && dayForecast.day6[0].day}</h4>
           {dayForecast.day6 &&
-            dayForecast.day6.map((hour) => {
+            dayForecast.day6.map((hour, i) => {
               return (
-                <div className='Forecast-HourFlex'>
+                <div className='Forecast-HourFlex' key={i}>
                   <div className='Forecast-HourItem'>
                     <div>{hour.time}</div>
                     <div>{hour.tag}</div>

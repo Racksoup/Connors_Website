@@ -66,7 +66,7 @@ const Hourly = () => {
             )}
           </thead>
           <tbody>
-            {hourly.map((hour) => {
+            {hourly.map((hour, i) => {
               if (hourTag > 11) {
                 hourTag = 0;
                 if (dayNight === 'PM') {
@@ -79,7 +79,7 @@ const Hourly = () => {
 
               if (screenSize.dynamicWidth > 650) {
                 return (
-                  <tr style={{ color: 'white' }}>
+                  <tr style={{ color: 'white' }} key={i}>
                     <td>
                       {hourTag}
                       {dayNight}
@@ -95,7 +95,7 @@ const Hourly = () => {
                 );
               } else {
                 return (
-                  <tr style={{ color: 'white' }}>
+                  <tr style={{ color: 'white' }} key={i}>
                     <td>
                       {hourTag}
                       {dayNight}

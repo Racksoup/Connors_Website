@@ -4,6 +4,7 @@ import Daily from './Daily';
 import Forecast from './Forecast';
 import Hourly from './Hourly';
 import Minutely from './Minutely';
+import EightDay from './EightDay';
 import { selectIsAuthenticated, selectLoading } from '../../../Redux/adminSlice';
 import { getOneCallWeather } from '../../../Redux/weatherSlice';
 
@@ -31,7 +32,10 @@ const Weather = () => {
           Daily
         </div>
         <div className='Btn' onClick={() => toggleLayout(1)}>
-          5 Day Forecast
+          5 Day
+        </div>
+        <div className='Btn' onClick={() => toggleLayout(4)}>
+          8 Day
         </div>
         <div className='Btn' onClick={() => toggleLayout(2)}>
           Hourly
@@ -44,6 +48,7 @@ const Weather = () => {
       {layout === 1 && <Forecast />}
       {layout === 2 && <Hourly />}
       {layout === 3 && <Minutely />}
+      {layout === 4 && <EightDay />}
     </div>
   );
 };
