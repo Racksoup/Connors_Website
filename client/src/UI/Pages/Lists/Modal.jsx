@@ -35,6 +35,11 @@ const Modal = ({ toggleModal, createListFunc, initState, title, resize }) => {
             value={item.title}
             onChange={(e) => inputChanged(e)}
             name='title'
+            onKeyDown={(e) => {
+              if (e.key === 'Enter') {
+                submitClicked(e);
+              }
+            }}
           />
         )}
         <div className='Btn' onClick={(e) => submitClicked(e)}>
