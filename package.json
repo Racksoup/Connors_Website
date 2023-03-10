@@ -1,7 +1,7 @@
 {
   "name": "connors-website",
   "version": "1.0.0",
-  "description": "Mongodb, Express, React, Node, Heroku App",
+  "description": "Personal Website",
   "main": "server.js",
   "engines": {
     "node": "14.x",

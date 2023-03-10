@@ -3,9 +3,11 @@ import axios from 'axios';
 
 const initialState = {
   tasks: null,
+  lastTasks: null,
 };
 
 export const selectTasks = (state) => state.schedule.tasks;
+export const selectLastTasks = (state) => state.schedule.lastTasks;
 
 export const scheduleSlice = createSlice({
   name: 'schedule',
@@ -31,6 +33,9 @@ export const scheduleSlice = createSlice({
     },
     gotTasks: (state, action) => {
       state.tasks = action.payload;
+    },
+    gotLastTasks: (state, action) => {
+      state.lastTasks = action.payload;
     },
   },
 });
@@ -80,6 +85,16 @@ export const getTasks = (dates) => async (dispatch) => {
   }
 };
 
-export const { createdTask, updatedTask, deletedTask, gotTask, gotTasks } =
+export const getLastTasks = (dates) => async (dispatch) => {
+  try {
+    const res = await axios.get(`api/schedule/tasks/${dates[0]}/${dates[dates.length - 1]}`);
+    dispatch(gotLastTasks(res.data));
+    console.log(res.data);
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const { createdTask, updatedTask, deletedTask, gotTask, gotTasks, gotLastTasks } =
   scheduleSlice.actions;
 export default scheduleSlice.reducer;
