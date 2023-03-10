@@ -5,6 +5,24 @@
   flex-direction: column;
   align-items: center;
 
+  .SuccessModal {
+    position: fixed;
+    margin-top: 10vh;
+    top: 0;
+    left: 50;
+    width: 24rem;
+    height: 8rem;
+    background-color: rgb(16, 192, 0);
+    color: black;
+    border: solid 0.3rem rgb(229, 255, 81);
+    border-radius: 0.3rem;
+    font-size: 3.5rem;
+    transform: rotate(-4deg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
   .TitleBox {
     display: flex;
     width: 100%;

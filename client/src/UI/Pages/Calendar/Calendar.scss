@@ -135,7 +135,10 @@
 
         .Overlay {
           position: absolute;
-          max-width: 8rem;
+          width: 8.3rem;
+          padding: 0 0.2rem;
+          display: flex;
+          flex-direction: column;
 
           .Num {
             width: 2rem;
@@ -144,11 +147,11 @@
           }
 
           .Title {
-            width: 100%;
             font-size: 1.2rem;
             text-align: center;
             -webkit-text-stroke-width: 0.5px;
             -webkit-text-stroke-color: black;
+            align-self: center;
 
             @media (max-width: 1000px) {
               display: none;
@@ -168,7 +171,7 @@
       overflow: hidden;
 
       @media (max-width: 1000px) {
-        width: auto;
+        width: 100%;
       }
 
       .Month {
@@ -207,11 +210,9 @@
       display: grid;
       grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
       grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
-      justify-items: stretch;
-      align-items: stretch;
 
       @media (max-width: 1000px) {
-        width: auto;
+        width: 100%;
         height: auto;
         grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
         grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
@@ -230,14 +231,14 @@
         cursor: pointer;
 
         @media (max-width: 1000px) {
-          width: 3.3rem;
-          margin: 0.3rem;
+          margin: 0.15rem;
+          height: 2rem;
         }
 
         &:hover {
-          border: solid rgba(255, 115, 0, 0.637) 0.2rem;
+          border: solid rgba(255, 115, 0, 0.637) 0.15rem;
           color: rgba(255, 115, 0);
-          border-radius: 0.6rem;
+          border-radius: 0.3rem;
         }
       }
     }

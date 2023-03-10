@@ -4,10 +4,12 @@ import axios from 'axios';
 const initialState = {
   journal: {},
   journals: [],
+  journalPostSuccessful: false,
 };
 
 export const selectJournal = (state) => state.calendar.journal;
 export const selectJournals = (state) => state.calendar.journals;
+export const selectJournalPostSuccessful = (state) => state.calendar.journalPostSuccessful;
 
 export const calendarSlice = createSlice({
   name: 'calendar',
@@ -30,6 +32,10 @@ export const calendarSlice = createSlice({
     },
     updateJournal: (state, action) => {
       state.journal = action.payload;
+      state.journalPostSuccessful = true;
+    },
+    resetJournalPostSuccessful: (state, action) => {
+      state.journalPostSuccessful = false;
     },
   },
 });
@@ -118,6 +124,9 @@ export const updateJournalPost = (item, file) => async (dispatch) => {
     if (item) {
       const res = await axios.put(`/api/journal/${item._id}`, item, config);
       dispatch(updateJournal(res.data));
+      setTimeout(() => {
+        dispatch(resetJournalPostSuccessful(false));
+      }, 2000);
     }
   } catch (err) {
     console.log(err);
@@ -131,5 +140,6 @@ export const {
   gotOneJournal,
   createJournal,
   updateJournal,
+  resetJournalPostSuccessful,
 } = calendarSlice.actions;
 export default calendarSlice.reducer;

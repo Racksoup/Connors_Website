@@ -5,6 +5,7 @@ import {
   updateJournalPost,
   clearJournal,
   selectJournal,
+  selectJournalPostSuccessful,
 } from '../../../Redux/calendarSlice';
 import { selectIsAuthenticated, selectLoading } from '../../../Redux/adminSlice';
 
@@ -14,6 +15,7 @@ import { Navigate, Link } from 'react-router-dom';
 const JournalEntry = () => {
   const dispatch = useDispatch();
   const journal = useSelector(selectJournal);
+  const journalPostSuccessful = useSelector(selectJournalPostSuccessful);
   const isAuthenticated = useSelector(selectIsAuthenticated);
   const loading = useSelector(selectLoading);
 
@@ -66,6 +68,7 @@ const JournalEntry = () => {
   if (journal) {
     return (
       <div className='JournalEntry'>
+        {journalPostSuccessful && <div className='SuccessModal'>Post Successful</div>}
         <div className='TitleBox'>
           <Link className='Link' to='/calendar'>
             <div className='Btn' onClick={() => dispatch(clearJournal())}>
