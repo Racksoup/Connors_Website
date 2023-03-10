@@ -12,6 +12,11 @@ $navColorBottom: rgb(28, 38, 50);
 
   .Btn {
     margin: 0 1rem;
+
+    @media (max-width: 1000px) {
+      margin: 0.3rem 0.3rem;
+      width: 6rem;
+    }
   }
 }
 
