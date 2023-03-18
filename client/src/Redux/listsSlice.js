@@ -100,8 +100,19 @@ export const createListItem = (item) => async (dispatch) => {
 
 export const getList = (listId) => async (dispatch) => {
   try {
-    const res = await axios.get(`/api/listItem/${listId}`);
-    dispatch(gotList(res.data));
+    let res = await axios.get(`/api/listItem/${listId}`);
+    let sortedRes = res.data.sort(function (a, b) {
+      let c = a.title.toLowerCase();
+      let d = b.title.toLowerCase();
+      if (c > d) {
+        return 1;
+      }
+      if (c < d) {
+        return -1;
+      }
+      return 0;
+    });
+    dispatch(gotList(sortedRes));
   } catch (error) {
     console.log(error);
   }
