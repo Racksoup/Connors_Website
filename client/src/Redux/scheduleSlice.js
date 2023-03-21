@@ -78,7 +78,7 @@ export const getTask = (id) => async (dispatch) => {
 
 export const getTasks = (dates) => async (dispatch) => {
   try {
-    const res = await axios.get(`api/schedule/tasks/${dates[0]}/${dates[13]}`);
+    const res = await axios.get(`api/schedule/tasks/${dates[0]}/${dates[20]}`);
     dispatch(gotTasks(res.data));
   } catch (error) {
     console.log(error);
@@ -89,7 +89,6 @@ export const getLastTasks = (dates) => async (dispatch) => {
   try {
     const res = await axios.get(`api/schedule/tasks/${dates[0]}/${dates[dates.length - 1]}`);
     dispatch(gotLastTasks(res.data));
-    console.log(res.data);
   } catch (error) {
     console.log(error);
   }

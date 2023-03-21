@@ -38,18 +38,18 @@ const Schedule = () => {
   const daysOfWeek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
   const xDate = new Date();
   const currDate = new Date(xDate.getFullYear(), xDate.getMonth(), xDate.getDate());
-  const [next14Days, setNext14Days] = useState([]);
+  const [next21Days, setNext21Days] = useState([]);
   const [last3Days, setLast3Days] = useState([]);
   const [updateModal, setUpdateModal] = useState(false);
   const [createModal, setCreateModal] = useState(false);
 
   useEffect(() => {
-    // get next 14 days data
+    // get next 21 days data
     let daysArr = [];
-    for (let i = 0; i < 14; i++) {
+    for (let i = 0; i < 21; i++) {
       daysArr.push(new Date(currDate.getTime() + i * 86400000));
     }
-    setNext14Days(daysArr);
+    setNext21Days(daysArr);
     dispatch(getTasks(daysArr));
 
     // get last 3 days data
@@ -83,7 +83,7 @@ const Schedule = () => {
         <h2>Schedule</h2>
 
         {/* past dates table */}
-        <div className='Table'>
+        <div className='PastDates'>
           {last3Days.map((day, i) => {
             let daysTasks = lastTasks.filter((t) => new Date(t.date).getDate() === day.getDate());
 
@@ -108,54 +108,79 @@ const Schedule = () => {
         </div>
 
         {/* future dates table */}
-        <div className='Table'>
-          {next14Days.map((day, i) => {
-            let daysTasks = tasks.filter((t) => new Date(t.date).getDate() === day.getDate());
-
+        <div className='FutureDates'>
+          {next21Days.map((day, dayIndex) => {
             return (
-              <div key={i} className='Day'>
-                <div className='Header'>
-                  <div className='Date'>
-                    {daysOfWeek[day.getDay()]} {day.getDate()} {monthsOfYear[day.getMonth() + 1]}
-                  </div>
-                  <button
-                    className='Create'
-                    onClick={() => {
-                      setTask({
-                        task: '',
-                        date: new Date(day.getFullYear(), day.getMonth(), day.getDate()),
-                      });
-                      console.log(task);
-                      setCreateModal(true);
-                    }}
-                  >
-                    +
-                  </button>
-                </div>
-                {daysTasks.map((t, j) => (
-                  <div key={j} className='Item'>
-                    <button className='Delete' onClick={() => dispatch(deleteTask(t._id))}>
-                      X
-                    </button>
-                    <button
-                      className='Update'
-                      onClick={() => {
-                        setTask(t);
-                        setUpdateModal(true);
-                      }}
-                    >
-                      &#8593;
-                    </button>
-                    {t.task}
-                  </div>
-                ))}
-              </div>
+              <DayWidget
+                tasks={tasks}
+                day={day}
+                dayIndex={dayIndex}
+                daysOfWeek={daysOfWeek}
+                monthsOfYear={monthsOfYear}
+                task={task}
+                setTask={setTask}
+                setCreateModal={setCreateModal}
+                setUpdateModal={setUpdateModal}
+              />
             );
           })}
         </div>
       </div>
     );
   } else return null;
+};
+
+const DayWidget = ({
+  tasks,
+  day,
+  dayIndex,
+  daysOfWeek,
+  monthsOfYear,
+  task,
+  setTask,
+  setCreateModal,
+  setUpdateModal,
+}) => {
+  let daysTasks = tasks.filter((t) => new Date(t.date).getDate() === day.getDate());
+
+  return (
+    <div key={dayIndex} className='Day'>
+      <div className='Header'>
+        <div className='Date'>
+          {daysOfWeek[day.getDay()]} {day.getDate()} {monthsOfYear[day.getMonth() + 1]}
+        </div>
+        <button
+          className='Create'
+          onClick={() => {
+            setTask({
+              task: '',
+              date: new Date(day.getFullYear(), day.getMonth(), day.getDate()),
+            });
+            setCreateModal(true);
+          }}
+        >
+          +
+        </button>
+      </div>
+      {daysTasks.map((t, j) => (
+        <div key={j} className='Item'>
+          <button className='Delete' onClick={() => dispatch(deleteTask(t._id))}>
+            X
+          </button>
+          <button
+            className='Update'
+            onClick={() => {
+              setTask(t);
+              setUpdateModal(true);
+            }}
+          >
+            &#8593;
+          </button>
+          {t.task}
+        </div>
+      ))}
+    </div>
+  );
 };
 
 export default Schedule;

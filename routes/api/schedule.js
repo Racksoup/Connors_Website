@@ -12,8 +12,8 @@ router.get('/tasks/:date1/:date2', adminAuth, async (req, res) => {
   try {
     const tasks = await ScheduleTask.find({
       date: {
-        $gt: date1,
-        $lt: date2,
+        $gte: date1,
+        $lte: date2,
       },
     });
     res.json(tasks);
