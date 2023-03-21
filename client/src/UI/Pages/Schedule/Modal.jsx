@@ -6,14 +6,14 @@ import { useDispatch } from 'react-redux';
 const Modal = ({ toggleModal, Func, initState, title }) => {
   const [item, setItem] = useState(initState);
   const dispatch = useDispatch();
-  
+
   const submitClicked = (e) => {
     e.stopPropagation();
     console.log(item);
     dispatch(Func(item));
     toggleModal(false);
   };
-  
+
   const inputChanged = (e) => {
     setItem({ ...item, [e.target.name]: e.target.value });
   };
@@ -22,7 +22,18 @@ const Modal = ({ toggleModal, Func, initState, title }) => {
     <div className='Modal-Background' onClick={() => toggleModal(false)}>
       <div className='Modal' onClick={(e) => e.stopPropagation()}>
         <h2 className='Title'>{title}</h2>
-        <input type='text' className='Input' name='task' onChange={(e) => inputChanged(e)} value={item.task}/>
+        <input
+          type='text'
+          className='Input'
+          name='task'
+          onChange={(e) => inputChanged(e)}
+          value={item.task}
+          onKeyDown={(e) => {
+            if (e.key === 'Enter') {
+              submitClicked(e);
+            }
+          }}
+        />
         <div className='Btn' onClick={(e) => submitClicked(e)}>
           Submit
         </div>
