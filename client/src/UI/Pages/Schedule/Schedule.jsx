@@ -83,7 +83,7 @@ const Schedule = () => {
         <h2>Schedule</h2>
 
         {/* past dates table */}
-        <div className='PastDates'>
+        <div className='Dates'>
           {last3Days.map((day, i) => {
             let daysTasks = lastTasks.filter((t) => new Date(t.date).getDate() === day.getDate());
 
@@ -108,7 +108,7 @@ const Schedule = () => {
         </div>
 
         {/* future dates table */}
-        <div className='FutureDates'>
+        <div className='Dates'>
           {next21Days.map((day, dayIndex) => {
             return (
               <DayWidget
