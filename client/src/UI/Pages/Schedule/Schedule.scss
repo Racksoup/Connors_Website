@@ -10,63 +10,6 @@
     margin: 1rem 0;
   }
 
-  .PastDates {
-    display: flex;
-    flex-direction: column;
-
-    .Day {
-      display: flex;
-      flex-direction: column;
-      border-top: solid 1px white;
-      width: 40rem;
-
-      @media (max-width: 660px) {
-        width: 92vw;
-      }
-
-      button {
-        cursor: pointer;
-      }
-
-      .Header {
-        display: flex;
-
-        .Red {
-          color: rgb(255, 68, 68);
-        }
-
-        .Date {
-          text-decoration: underline;
-          margin: 0.3rem 0.3rem;
-        }
-
-        .Create {
-          margin: -0.1rem 0 0 0.3rem;
-          color: green;
-          font-size: 1.6rem;
-        }
-      }
-
-      .Item {
-        display: flex;
-        font-size: 1.4rem;
-        padding-left: 1rem;
-
-        .Delete {
-          margin: 0 1rem;
-          color: red;
-          font-size: 1.4rem;
-        }
-
-        .Update {
-          margin: -0.2rem 1rem 0 0;
-          color: yellow;
-          font-size: 1.4rem;
-        }
-      }
-    }
-  }
-
   .Dates {
     max-width: 1440px;
     display: flex;

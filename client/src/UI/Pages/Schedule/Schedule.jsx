@@ -121,6 +121,7 @@ const Schedule = () => {
                 setTask={setTask}
                 setCreateModal={setCreateModal}
                 setUpdateModal={setUpdateModal}
+                dispatch={dispatch}
               />
             );
           })}
@@ -140,6 +141,7 @@ const DayWidget = ({
   setTask,
   setCreateModal,
   setUpdateModal,
+  dispatch,
 }) => {
   let daysTasks = tasks.filter((t) => new Date(t.date).getDate() === day.getDate());
 
