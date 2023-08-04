@@ -91,7 +91,7 @@ router.post(
         },
       };
 
-      jwt.sign(payload, process.env.ADMIN_SECRET, { expiresIn: '5h' }, (err, token) => {
+      jwt.sign(payload, process.env.ADMIN_SECRET, { expiresIn: '2d' }, (err, token) => {
         if (err) throw err;
         res.json({ token });
       });
