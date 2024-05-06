@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import './Lists.scss';
+import React, { useState, useEffect } from "react";
+import "./Lists.scss";
 import {
   getLists,
   createList,
@@ -11,13 +11,16 @@ import {
   updateListItem,
   selectList,
   selectLists,
-} from '../../../Redux/listsSlice';
-import { selectIsAuthenticated, selectLoading } from '../../../Redux/adminSlice';
-import Modal from './Modal';
-import DeleteModal from './DeleteModal';
+} from "../../../Redux/listsSlice";
+import {
+  selectIsAuthenticated,
+  selectLoading,
+} from "../../../Redux/adminSlice";
+import Modal from "./Modal.jsx";
+import DeleteModal from "./DeleteModal.jsx";
 
-import { Navigate } from 'react-router-dom';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { Navigate } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faPlus,
   faX,
@@ -28,8 +31,8 @@ import {
   faSquare,
   faCircle,
   faArrowUp,
-} from '@fortawesome/free-solid-svg-icons';
-import { useDispatch, useSelector } from 'react-redux';
+} from "@fortawesome/free-solid-svg-icons";
+import { useDispatch, useSelector } from "react-redux";
 
 const Lists = () => {
   const dispatch = useDispatch();
@@ -44,19 +47,19 @@ const Lists = () => {
   const [updateListModal, toggleUpdateListModal] = useState(false);
   const [deleteItemModal, toggleDeleteItemModal] = useState(false);
   const [deleteListModal, toggleDeleteListModal] = useState(false);
-  const [lastListClicked, setLastListClicked] = useState('');
-  const [lastItemClicked, setLastItemClicked] = useState('');
-  const newListInitState = { title: '' };
+  const [lastListClicked, setLastListClicked] = useState("");
+  const [lastItemClicked, setLastItemClicked] = useState("");
+  const newListInitState = { title: "" };
   const newItemInitState = {
     listId: lastListClicked._id,
     parentId: lastListClicked._id,
-    title: '',
+    title: "",
     checked: false,
   };
   const newNestedItemInitState = {
     listId: lastItemClicked.listId,
     parentId: lastItemClicked._id,
-    title: '',
+    title: "",
     checked: false,
   };
 
@@ -82,7 +85,7 @@ const Lists = () => {
 
   const deleteListClicked = (list) => {
     dispatch(deleteList(list));
-    setLastListClicked('');
+    setLastListClicked("");
   };
 
   const addItemClicked = (e, item) => {
@@ -118,18 +121,18 @@ const Lists = () => {
   };
 
   if (!isAuthenticated && !loading) {
-    return <Navigate to='/admin-login' />;
+    return <Navigate to="/admin-login" />;
   }
 
   if (list)
     return (
-      <div className='Lists'>
+      <div className="Lists">
         {modal == true && (
           <Modal
             toggleModal={toggleModal}
             createListFunc={createList}
             initState={newListInitState}
-            title='Create New List'
+            title="Create New List"
             resize={false}
           />
         )}
@@ -138,7 +141,7 @@ const Lists = () => {
             toggleModal={toggleNewItemModal}
             createListFunc={createListItem}
             initState={newItemInitState}
-            title='Create New Item'
+            title="Create New Item"
             resize={true}
           />
         )}
@@ -147,7 +150,7 @@ const Lists = () => {
             toggleModal={toggleNewNestedItemModal}
             createListFunc={createListItem}
             initState={newNestedItemInitState}
-            title='Create New Item'
+            title="Create New Item"
             resize={true}
           />
         )}
@@ -156,7 +159,7 @@ const Lists = () => {
             toggleModal={toggleUpdateItemModal}
             createListFunc={updateListItem}
             initState={lastItemClicked}
-            title='Update Item'
+            title="Update Item"
             resize={true}
           />
         )}
@@ -179,39 +182,48 @@ const Lists = () => {
             toggleModal={toggleUpdateListModal}
             createListFunc={updateListClicked}
             initState={lastListClicked}
-            title='Update List'
+            title="Update List"
             resize={false}
           />
         )}
 
-        <div className='Btn NewListBtn' onClick={() => toggleModal(true)}>
-          <FontAwesomeIcon className='Icon' icon={faPlus} />
+        <div className="Btn NewListBtn" onClick={() => toggleModal(true)}>
+          <FontAwesomeIcon className="Icon" icon={faPlus} />
           New List
         </div>
-        <div className='Nav'>
+        <div className="Nav">
           {lists.map((list) => (
-            <div className='Btn' onClick={() => clickedList(list)}>
+            <div className="Btn" onClick={() => clickedList(list)}>
               {list.title}
             </div>
           ))}
         </div>
         {lastListClicked && (
-          <div className='List'>
-            <div className='ListNav'>
-              <div className='Btn Btn-Delete' onClick={() => toggleDeleteListModal(true)}>
-                <FontAwesomeIcon icon={faX} className='Icon' />
+          <div className="List">
+            <div className="ListNav">
+              <div
+                className="Btn Btn-Delete"
+                onClick={() => toggleDeleteListModal(true)}
+              >
+                <FontAwesomeIcon icon={faX} className="Icon" />
               </div>
-              <h3 className='Title'>{lastListClicked.title}</h3>
-              <div className='Btns'>
-                <div className='Btn Btn-Add' onClick={() => toggleNewItemModal(true)}>
-                  <FontAwesomeIcon icon={faPlus} className='Icon' />
+              <h3 className="Title">{lastListClicked.title}</h3>
+              <div className="Btns">
+                <div
+                  className="Btn Btn-Add"
+                  onClick={() => toggleNewItemModal(true)}
+                >
+                  <FontAwesomeIcon icon={faPlus} className="Icon" />
                 </div>
-                <div className='Btn' onClick={() => toggleUpdateListModal(true)}>
-                  <FontAwesomeIcon icon={faArrowUp} className='Icon' />
+                <div
+                  className="Btn"
+                  onClick={() => toggleUpdateListModal(true)}
+                >
+                  <FontAwesomeIcon icon={faArrowUp} className="Icon" />
                 </div>
               </div>
             </div>
-            <div className='Items'>
+            <div className="Items">
               {list.map((item) => {
                 if (item.parentId === item.listId && !item.checked) {
                   return (
@@ -274,42 +286,53 @@ const ItemChain = ({
   };
 
   if (depth <= 0) {
-    labelStyle.marginLeft = '0';
+    labelStyle.marginLeft = "0";
   }
 
   if (item.checked) {
-    labelStyle.textDecorationLine = 'line-through';
-    labelStyle.textDecorationThickness = '4px';
-    labelStyle.textDecorationColor = 'rgba(0, 0, 0, 1)';
+    labelStyle.textDecorationLine = "line-through";
+    labelStyle.textDecorationThickness = "4px";
+    labelStyle.textDecorationColor = "rgba(0, 0, 0, 1)";
   }
 
   const Indent = () => {
-    let shapes = [faCircle, faAngleRight, faMinus, faPlus, faAsterisk, faStar, faSquare];
+    let shapes = [
+      faCircle,
+      faAngleRight,
+      faMinus,
+      faPlus,
+      faAsterisk,
+      faStar,
+      faSquare,
+    ];
     let shapesInd = depth % 7;
     let myString = shapes[shapesInd];
     return (
-      <div className='Indents'>
-        <FontAwesomeIcon icon={myString} className='Icon' />
+      <div className="Indents">
+        <FontAwesomeIcon icon={myString} className="Icon" />
       </div>
     );
   };
 
   return (
     <>
-      <div className='Item' onClick={() => clickedItem(item)}>
-        <div className='Label' style={labelStyle}>
+      <div className="Item" onClick={() => clickedItem(item)}>
+        <div className="Label" style={labelStyle}>
           <Indent />
           {item.title}
         </div>
-        <div className='Item-Btns'>
-          <div className='Btn Btn-Add' onClick={(e) => addItemClicked(e, item)}>
-            <FontAwesomeIcon icon={faPlus} className='Icon' />
+        <div className="Item-Btns">
+          <div className="Btn Btn-Add" onClick={(e) => addItemClicked(e, item)}>
+            <FontAwesomeIcon icon={faPlus} className="Icon" />
           </div>
-          <div className='Btn' onClick={(e) => updateItemClicked(e, item)}>
-            <FontAwesomeIcon icon={faArrowUp} className='Icon' />
+          <div className="Btn" onClick={(e) => updateItemClicked(e, item)}>
+            <FontAwesomeIcon icon={faArrowUp} className="Icon" />
           </div>
-          <div className='Btn Btn-Delete' onClick={(e) => itemDeleteClicked(e, item)}>
-            <FontAwesomeIcon icon={faX} className='Icon' />
+          <div
+            className="Btn Btn-Delete"
+            onClick={(e) => itemDeleteClicked(e, item)}
+          >
+            <FontAwesomeIcon icon={faX} className="Icon" />
           </div>
         </div>
       </div>

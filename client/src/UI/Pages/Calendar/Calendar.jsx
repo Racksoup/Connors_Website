@@ -1,15 +1,15 @@
-import React, { useEffect, useState } from 'react';
-import './Calendar.scss';
+import React, { useEffect, useState } from "react";
+import "./Calendar.scss";
 import {
   getOneJournalByDate,
   getMonthsJournals,
   selectJournals,
-} from '../../../Redux/calendarSlice';
-import YearLayout from './YearLayout';
-import MonthLayout from './MonthLayout';
-import DayLayout from './DayLayout';
+} from "../../../Redux/calendarSlice";
+import YearLayout from "./YearLayout.jsx";
+import MonthLayout from "./MonthLayout.jsx";
+import DayLayout from "./DayLayout.jsx";
 
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector, useDispatch } from "react-redux";
 
 const Calendar = () => {
   const dispatch = useDispatch();
@@ -17,18 +17,18 @@ const Calendar = () => {
   const [calendarLayout, toggleCalendarLayout] = useState(0);
   const [dateValue, setDateValue] = useState(new Date());
   const monthsOfYear = [
-    'January',
-    'February',
-    'March',
-    'April',
-    'May',
-    'June',
-    'July',
-    'August',
-    'September',
-    'October',
-    'November',
-    'December',
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
   ];
   const numOfDaysInMonth = {
     January: 31,
@@ -44,7 +44,15 @@ const Calendar = () => {
     November: 30,
     December: 31,
   };
-  const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+  const days = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+  ];
   const currentMonth = monthsOfYear[dateValue.getMonth()];
   const currentYear = dateValue.getFullYear();
 
@@ -68,7 +76,14 @@ const Calendar = () => {
     const firstDayName = days[7 - subDays];
     const firstDayArrIndex = 7 - subDays;
     const Year = day.getFullYear();
-    const firstDay = [firstDayName, firstDayArrIndex, Month, MonthString, DaysInMonth, Year];
+    const firstDay = [
+      firstDayName,
+      firstDayArrIndex,
+      Month,
+      MonthString,
+      DaysInMonth,
+      Year,
+    ];
     return firstDay;
   };
 
@@ -78,7 +93,7 @@ const Calendar = () => {
 
     // set prevMonthNumDays, if month = 0(jan) set it to dec
     if (firstDay[2] === 0) {
-      prevMonthNumDays = numOfDaysInMonth['December'];
+      prevMonthNumDays = numOfDaysInMonth["December"];
     } else {
       prevMonthNumDays = numOfDaysInMonth[monthsOfYear[firstDay[2] - 1]];
     }
@@ -86,7 +101,11 @@ const Calendar = () => {
     // add prev month
     // add prev month
     // add prev month
-    for (let i = prevMonthNumDays - firstDay[1] + 1; i < prevMonthNumDays + 1; i++) {
+    for (
+      let i = prevMonthNumDays - firstDay[1] + 1;
+      i < prevMonthNumDays + 1;
+      i++
+    ) {
       // format thisDaysDate (month issue)
       let thisDaysDate;
       if (firstDay[2] === 10 || firstDay[2] === 11) {
@@ -126,11 +145,17 @@ const Calendar = () => {
       // format thisDaysDate (month issue)
       let thisDaysDate;
       if (firstDay[2] === 9 || firstDay[2] === 10) {
-        thisDaysDate = new Date(`${firstDay[5]}-${firstDay[2] + 1}-${x}T05:00:00`);
+        thisDaysDate = new Date(
+          `${firstDay[5]}-${firstDay[2] + 1}-${x}T05:00:00`
+        );
       } else if (firstDay[2] === 11) {
-        thisDaysDate = new Date(`${firstDay[5]}-${firstDay[2] + 1}-${x}T05:00:00`);
+        thisDaysDate = new Date(
+          `${firstDay[5]}-${firstDay[2] + 1}-${x}T05:00:00`
+        );
       } else {
-        thisDaysDate = new Date(`${firstDay[5]}-0${firstDay[2] + 1}-${x}T05:00:00`);
+        thisDaysDate = new Date(
+          `${firstDay[5]}-0${firstDay[2] + 1}-${x}T05:00:00`
+        );
       }
 
       let journalIndex = null;
@@ -145,7 +170,11 @@ const Calendar = () => {
       });
 
       // push
-      daysOfMonth.push({ dayOfMonth: (i + 1).toString(), thisDaysDate, journalIndex });
+      daysOfMonth.push({
+        dayOfMonth: (i + 1).toString(),
+        thisDaysDate,
+        journalIndex,
+      });
     }
 
     // add next month
@@ -164,11 +193,17 @@ const Calendar = () => {
 
       let thisDaysDate;
       if (firstDay[2] === 8 || firstDay[2] === 9 || firstDay[2] === 10) {
-        thisDaysDate = new Date(`${firstDay[5]}-${firstDay[2] + 2}-${x}T05:00:00`);
+        thisDaysDate = new Date(
+          `${firstDay[5]}-${firstDay[2] + 2}-${x}T05:00:00`
+        );
       } else if (firstDay[2] === 11) {
-        thisDaysDate = new Date(`${firstDay[5]}-0${firstDay[2] - 10}-${x}T05:00:00`);
+        thisDaysDate = new Date(
+          `${firstDay[5]}-0${firstDay[2] - 10}-${x}T05:00:00`
+        );
       } else {
-        thisDaysDate = new Date(`${firstDay[5]}-0${firstDay[2] + 2}-${x}T05:00:00`);
+        thisDaysDate = new Date(
+          `${firstDay[5]}-0${firstDay[2] + 2}-${x}T05:00:00`
+        );
       }
 
       let journalIndex = null;
