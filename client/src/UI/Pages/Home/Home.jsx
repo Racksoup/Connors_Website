@@ -18,16 +18,16 @@ const Home = () => {
   const english = useSelector(selectEnglish);
   const auth = useSelector(selectIsAuthenticated);
 
-  // useEffect(() => {
-  //   dispatch(getRandomWiki());
-  // }, []);
+  useEffect(() => {
+    dispatch(getRandomWiki());
+  }, []);
 
-  // useEffect(() => {
-  //   if (english.title) {
-  //     const article = { title: english.title, content: english.content };
-  //     dispatch(getTranslation(article));
-  //   }
-  // }, [english]);
+  useEffect(() => {
+    if (english.title) {
+      const article = { title: english.title, content: english.content };
+      dispatch(getTranslation(article));
+    }
+  }, [english]);
 
   if (!auth) {
     return <Navigate to='/admin-login' />;
