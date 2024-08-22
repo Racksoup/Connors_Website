@@ -6,31 +6,40 @@
 
   .NewListBtn {
     margin: 0 0 1rem 0;
-    background-color: rgb(0, 255, 170);
 
     .Icon {
       margin: 0 0.3rem 0 0;
       font-size: 1rem;
+      
+      svg {
+        color: white;
+      }
+      path {
+        color: white;
+      }
     }
   }
 
   .Nav {
     width: 50rem;
+    padding: .7rem;
+    border-radius: .5rem;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
-    gap: 0.4rem;
+    gap: .5rem 1rem;
+    background-color: rgb(43, 43, 43);
+
 
     .Btn {
-      background-color: rgb(222, 202, 255);
       margin: 0.2rem 0.1rem;
-      height: 3.6rem;
+      height: 3.0rem;
       width: 100%;
       white-space: wrap;
     }
   }
 
   .List {
-    width: 40rem;
+    min-width: 40rem;
     margin: 2.5rem 0 0 0;
     border: solid 0.1rem rgb(0, 184, 240);
     border-radius: .3rem;
@@ -39,7 +48,7 @@
     align-items: center;
 
     @media (max-width: 1000px) {
-      width: 100%;
+      width: 95%;
       margin: 2rem 0 0 0;
     }
 
@@ -138,8 +147,8 @@
   .Lists {
     margin: 0.6rem 0 1rem 0;
     .Nav {
-      width: 100%;
-      grid-template-columns: 1fr 1fr 1fr;
+      width: 95%;
+      grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
 
       .Btn {
         height: 3rem;
@@ -152,6 +161,14 @@
 
         margin: 0 0.05rem;
       }
+    }
+  }
+}
+
+@media (max-width: 600px) {
+  .Lists {
+    .Nav {
+      grid-template-columns: 1fr 1fr 1fr;
     }
   }
 }

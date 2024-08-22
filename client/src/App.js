@@ -37,7 +37,7 @@ const App = () => {
           <Route exact path='/journal-view' element={<JournalView />} />
           <Route exact path='/schedule' element={<Schedule />} />
         </Routes>
-        <Footer />
+	  {/*<Footer /> */}
       </div>
     </div>
   );

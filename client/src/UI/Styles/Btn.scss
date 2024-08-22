@@ -1,23 +1,24 @@
 @mixin btn() {
   height: 2rem;
   font-size: 1rem;
-  font-weight: 700;
-  border-radius: 0.2rem;
+  font-weight: 400;
+  border-radius: 0.1rem;
   cursor: pointer;
   text-decoration: none;
-  background-color: rgb(185, 126, 67);
-  color: black;
+  background-color: rgb(30, 30, 30);
+  color: white;
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
-  min-width: 7rem;
+  min-width: 5rem;
   padding: 0 .6rem;
   white-space: nowrap;
+  border: solid 0.1rem rgb(150, 150, 150);
 
   &:hover {
-    font-size: 1.05rem;
     border: solid 0.1rem rgb(52, 225, 255);
+    color: rgb(52, 225, 255);
   }
 }
 

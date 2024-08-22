@@ -1,21 +1,18 @@
 @import "../../../Vars.scss";
-$navColorTop: rgb(15, 20, 26);
-$navColorBottom: rgb(28, 38, 50);
 
 .Navbar {
   width: 100%;
   display: flex;
-  background-color: $navColorTop;
+  background-color: rgb(56, 0, 24);
   min-height: 3.75rem;
   justify-content: center;
   align-items: center;
 
   .Btn {
-    margin: 0 1rem;
+    margin: 0 .8rem;
 
-    @media (max-width: 1000px) {
+    @media (max-width: 600px) {
       margin: 0.3rem 0.3rem;
-      width: 6rem;
     }
   }
 }
