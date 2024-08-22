@@ -39,7 +39,7 @@
   }
 
   .List {
-    min-width: 40rem;
+    width: 60rem;
     margin: 2.5rem 0 0 0;
     border: solid 0.1rem rgb(0, 184, 240);
     border-radius: .3rem;
@@ -121,7 +121,6 @@
         }
 
         .Label {
-          max-width: 80%;
           font-size: 1rem;
           line-height: 1.3rem;
           overflow: hidden;
@@ -130,7 +129,14 @@
             display: inline;
 
             .Icon {
-              width: 1.7rem;
+              width: .4rem;
+              height: .4rem;
+              margin-bottom: .3rem;
+              margin-right: .5rem;
+
+              path {
+                color: white;
+              } 
             }
           }
         }

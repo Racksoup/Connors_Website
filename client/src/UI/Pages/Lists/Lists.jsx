@@ -306,10 +306,10 @@ const ItemChain = ({
       faSquare,
     ];
     let shapesInd = depth % 7;
-    let myString = shapes[shapesInd];
+    let currShape = shapes[shapesInd];
     return (
       <div className="Indents">
-        <FontAwesomeIcon icon={myString} className="Icon" />
+        <FontAwesomeIcon icon={faCircle} className="Icon" />
       </div>
     );
   };
