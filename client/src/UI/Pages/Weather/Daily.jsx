@@ -56,7 +56,7 @@ const Daily = () => {
         <Table bordered variant='dark' style={{ width: '80%', margin: 'auto', marginTop: '20px' }}>
           {screenSize.dynamicWidth > 720 ? (
             <thead>
-              <tr style={{ color: 'white' }}>
+              <tr style={{ color: 'white', borderBottom: 'solid 1px' }}>
                 <th>Day</th>
                 <th>Max Temp</th>
                 <th>Min Temp</th>

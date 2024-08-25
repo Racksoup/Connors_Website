@@ -44,7 +44,7 @@ const Weather = () => {
           Hourly
         </div>
         <div className="Btn" onClick={() => toggleLayout(3)}>
-          Minutely
+          Minute
         </div>
       </div>
       {layout === 0 && <Daily />}
