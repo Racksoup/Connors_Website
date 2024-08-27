@@ -65,12 +65,13 @@
 }
 
 .Forecast-DayFlex {
+  background-color: rgb(40, 26, 26);
   width: 12rem;
   padding: 0.6rem;
   border-width: 1px;
   border-style: solid;
-  border-color: rgba(255, 255, 255, 0.2);
-  border-radius: 10px;
+  border-color: rgba(130, 130, 130, 0.2);
+  border-radius: 5px;
   margin-top: 20px;
   display: flex;
   flex-direction: column;
@@ -90,25 +91,28 @@
 }
 
 .EightDay {
-  max-width: 40rem;
+  max-width: 49rem;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
 
   .Day {
     margin: 0.8rem;
-    width: 7.3rem;
-    border: 0.1rem solid white;
-    border-radius: 0.5rem;
+    background-color: rgb(40, 26, 26);
+    width: 9.8rem;
+    border: 0.1rem solid rgba(130, 130, 130, .2);
+    border-radius: 5px;
     display: flex;
     flex-direction: column;
-    padding: 0.3rem;
+    align-items: center;
 
     .TempLine {
       display: flex;
+      width: 100%;
+      justify-content: space-between;
+      padding: 0.1rem .3rem;
 
       .Time {
-        width: 4rem;
       }
 
       .Temp {
@@ -119,6 +123,7 @@
 
 .daily-table {
   width: 1300px;
+  border-color: rgba(130, 130, 130, 0.2);
   margin: auto;
   margin-top: 20px;
   background-color: rgb(40, 26, 26);
