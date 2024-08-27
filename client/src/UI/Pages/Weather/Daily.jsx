@@ -53,10 +53,10 @@ const Daily = () => {
     return (
       <div className='Weather'>
         <h1 className='Title'>Daily</h1>
-        <Table bordered variant='dark' style={{ width: '80%', margin: 'auto', marginTop: '20px' }}>
-          {screenSize.dynamicWidth > 720 ? (
+        <table className='daily-table' bordered variant='dark'>
+          {screenSize.dynamicWidth > 1300 ? (
             <thead>
-              <tr style={{ color: 'white', borderBottom: 'solid 1px' }}>
+              <tr className='header'>
                 <th>Day</th>
                 <th>Max Temp</th>
                 <th>Min Temp</th>
@@ -74,9 +74,9 @@ const Daily = () => {
                 <th>Moon Phase</th>
               </tr>
             </thead>
-          ) : screenSize.dynamicWidth > 600 ? (
+          ) : screenSize.dynamicWidth > 1000 ? (
             <thead>
-              <tr style={{ color: 'white' }}>
+              <tr>
                 <th>Day</th>
                 <th>Max Temp</th>
                 <th>Min Temp</th>
@@ -92,9 +92,9 @@ const Daily = () => {
                 <th>Moon Phase</th>
               </tr>
             </thead>
-          ) : screenSize.dynamicWidth > 400 ? (
+          ) : screenSize.dynamicWidth > 600 ? (
             <thead>
-              <tr style={{ color: 'white' }}>
+              <tr>
                 <th>Day</th>
                 <th>Max Temp</th>
                 <th>Min Temp</th>
@@ -108,7 +108,7 @@ const Daily = () => {
             </thead>
           ) : (
             <thead>
-              <tr style={{ color: 'white' }}>
+              <tr>
                 <th>Day</th>
                 <th>Max Temp</th>
                 <th>Min Temp</th>
@@ -125,9 +125,9 @@ const Daily = () => {
               }
               if (daily[i].clouds > 66) {
                 day.theClouds = <div>&#9729;</div>;
-              }
+  }
 
-              if (screenSize.dynamicWidth > 720) {
+              if (screenSize.dynamicWidth > 1300) {
                 return (
                   <tr style={{ color: 'white' }} key={i}>
                     <td>{day.theDay}</td>
@@ -147,7 +147,7 @@ const Daily = () => {
                     <td>{Math.round(day.moon_phase * 100)}%</td>
                   </tr>
                 );
-              } else if (screenSize.dynamicWidth > 600) {
+              } else if (screenSize.dynamicWidth > 1000) {
                 return (
                   <tr style={{ color: 'white' }}>
                     <td>{day.theDay}</td>
@@ -165,7 +165,7 @@ const Daily = () => {
                     <td>{Math.round(day.moon_phase * 100)}%</td>
                   </tr>
                 );
-              } else if (screenSize.dynamicWidth > 400) {
+              } else if (screenSize.dynamicWidth > 600) {
                 return (
                   <tr style={{ color: 'white' }}>
                     <td>{day.theDay}</td>
@@ -193,7 +193,7 @@ const Daily = () => {
               }
             })}
           </tbody>
-        </Table>
+        </table>
       </div>
     );
   } else return null;
