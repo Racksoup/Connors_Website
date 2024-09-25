@@ -1,9 +1,7 @@
 @import "../../../Vars.scss";
 
 .Calendar {
-  border-color: cyan;
-  border-style: solid;
-  border-radius: 20px;
+  border: solid 0.1rem rgb(0, 184, 240);
   margin: 1rem 0;
   width: 60rem;
   height: 44rem;
@@ -26,7 +24,7 @@
       font-size: 2.5rem;
       padding: 0rem;
       margin: 0rem;
-      width: 20rem;
+      width: 26rem;
       cursor: pointer;
       &:hover {
         color: rgb(255, 123, 0);
