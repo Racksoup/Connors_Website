@@ -29,13 +29,13 @@ const DayLayout = ({
         </div>
       </div>
       <div className='Grid'>
-        <p className='DayOfWeek'>Sunday</p>
-        <p className='DayOfWeek'>Monday</p>
-        <p className='DayOfWeek'>Tuesday</p>
-        <p className='DayOfWeek'>Wednesday</p>
-        <p className='DayOfWeek'>Thursday</p>
-        <p className='DayOfWeek'>Friday</p>
-        <p className='DayOfWeek'>Saturday</p>
+        <p className='DayOfWeek'>{window.innerWidth > 700 ? 'Sunday' : 'Sun'}</p>
+        <p className='DayOfWeek'>{window.innerWidth > 700 ? 'Monday' : 'Mon'}</p>
+        <p className='DayOfWeek'>{window.innerWidth > 700 ? 'Tuesday' : 'Tues'}</p>
+        <p className='DayOfWeek'>{window.innerWidth > 700 ? 'Wednesday' : 'Wed'}</p>
+        <p className='DayOfWeek'>{window.innerWidth > 700 ? 'Thursday' : 'Thur'}</p>
+        <p className='DayOfWeek'>{window.innerWidth > 700 ? 'Friday' : 'Fri'}</p>
+        <p className='DayOfWeek'>{window.innerWidth > 700 ? 'Saturday' : 'Sat'}</p>
         {daysOfMonth &&
           journals &&
           daysOfMonth.map((day) => {
