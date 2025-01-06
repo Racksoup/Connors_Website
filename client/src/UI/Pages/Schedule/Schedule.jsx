@@ -80,10 +80,9 @@ const Schedule = () => {
         {createModal == true && (
           <Modal toggleModal={setCreateModal} Func={createTask} initState={task} title='Add Task' />
         )}
-        <h2>Schedule</h2>
 
         {/* past dates table */}
-        <div className='Dates'>
+        {/* <div className='Dates'>
           {last3Days.map((day, i) => {
             let daysTasks = lastTasks.filter((t) => new Date(t.date).getDate() === day.getDate());
 
@@ -105,7 +104,7 @@ const Schedule = () => {
               </div>
             );
           })}
-        </div>
+        </div> */}
 
         {/* future dates table */}
         <div className='Dates'>
@@ -149,7 +148,7 @@ const DayWidget = ({
     <div key={dayIndex} className='Day'>
       <div className='Header'>
         <div className='Date'>
-          {daysOfWeek[day.getDay()]} {day.getDate()} {monthsOfYear[day.getMonth() + 1]}
+          {day.getDate()} {daysOfWeek[day.getDay()]}  
         </div>
         <button
           className='Create'

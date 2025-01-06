@@ -41,6 +41,7 @@ export const weatherSlice = createSlice({
       state.isHistorical = true;
     },
     gotOneCallWeather: (state, action) => {
+      console.log(action.payload);
       let daily = action.payload.daily;
       state.current = action.payload.current;
       state.minutely = action.payload.minutely;

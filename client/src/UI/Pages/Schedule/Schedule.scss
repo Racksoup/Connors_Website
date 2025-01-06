@@ -1,7 +1,10 @@
 @import "../../../Vars.scss";
 
 .Schedule {
-  margin: 3rem 0;
+  margin:  0;
+  padding: .4rem;
+  width: 100%;
+  height: calc(100vh - 3.75rem);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -11,23 +14,22 @@
   }
 
   .Dates {
-    max-width: 1440px;
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-gap: .1rem;
 
     .Day {
-      width: 12.25rem;
-      margin: 0 0.3rem 1.4rem 0.3rem;
+      width: 100%;
+      height: 100%;
       padding: 0.2rem;
       border: solid 1px white;
-      border-radius: 0.8rem;
+      border-radius: 0.2rem;
       display: flex;
       flex-direction: column;
-
-      @media (max-width: 660px) {
-        width: 92vw;
-      }
+      overflow: auto;
 
       button {
         cursor: pointer;
@@ -70,6 +72,36 @@
           color: yellow;
           font-size: 1.4rem;
         }
+      }
+    }
+  }
+}
+
+@media (max-width: 1200px) {
+  .Schedule {
+    height: auto;
+
+    .Dates {
+      grid-template-columns: 1fr 1fr 1fr;
+      grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+      
+      .Day {
+        height: 15rem;
+      }
+    }
+  }
+}
+
+@media (max-width: 640px) {
+  .Schedule {
+    height: auto;
+
+    .Dates {
+      grid-template-columns: 1fr;
+      grid-template-rows: auto;
+      
+      .Day {
+        height: 15rem;
       }
     }
   }
