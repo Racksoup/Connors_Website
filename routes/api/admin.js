@@ -36,7 +36,7 @@ router.post('/', adminAuth, async (req, res) => {
       },
     };
 
-    jwt.sign(payload, process.env.ADMIN_SECRET, { expiresIn: '2d' }, (err, token) => {
+    jwt.sign(payload, process.env.ADMIN_SECRET, { expiresIn: '14d' }, (err, token) => {
       if (err) throw err;
       res.json({ token });
     });
@@ -91,7 +91,7 @@ router.post(
         },
       };
 
-      jwt.sign(payload, process.env.ADMIN_SECRET, { expiresIn: '2d' }, (err, token) => {
+      jwt.sign(payload, process.env.ADMIN_SECRET, { expiresIn: '14d' }, (err, token) => {
         if (err) throw err;
         res.json({ token });
       });

@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from "react";
 import "./Weather.scss";
-import Daily from "./Daily.jsx";
-import Forecast from "./Forecast.jsx";
-import Hourly from "./Hourly.jsx";
+import Current from "./Current.jsx";
 import Minutely from "./Minutely.jsx";
+import Hourly from "./Hourly.jsx";
 import EightDay from "./EightDay.jsx";
 import {
   selectIsAuthenticated,
@@ -16,7 +15,7 @@ import { useSelector, useDispatch } from "react-redux";
 
 const Weather = () => {
   const dispatch = useDispatch();
-  const [layout, toggleLayout] = useState();
+  const [layout, toggleLayout] = useState('current');
   const isAuthenticated = useSelector(selectIsAuthenticated);
   const loading = useSelector(selectLoading);
 
@@ -31,27 +30,23 @@ const Weather = () => {
   return (
     <div className="Weather">
       <div className="Nav">
-        <div className="Btn" onClick={() => toggleLayout(0)}>
-          Daily
+        <div className="Btn" onClick={() => toggleLayout('current')}>
+          Current
         </div>
-        <div className="Btn" onClick={() => toggleLayout(1)}>
-          5 Day
-        </div>
-        <div className="Btn" onClick={() => toggleLayout(4)}>
-          8 Day
-        </div>
-        <div className="Btn" onClick={() => toggleLayout(2)}>
-          Hourly
-        </div>
-        <div className="Btn" onClick={() => toggleLayout(3)}>
+        <div className="Btn" onClick={() => toggleLayout('minute')}>
           Minute
         </div>
+        <div className="Btn" onClick={() => toggleLayout('hourly')}>
+          Hourly
+        </div>
+        <div className="Btn" onClick={() => toggleLayout('day')}>
+          7 Day
+        </div>
       </div>
-      {layout === 0 && <Daily />}
-      {layout === 1 && <Forecast />}
-      {layout === 2 && <Hourly />}
-      {layout === 3 && <Minutely />}
-      {layout === 4 && <EightDay />}
+      {layout === 'current' && <Current />}
+      {layout === 'minute' && <Minutely />}
+      {layout === 'hourly' && <Hourly />}
+      {layout === 'day' && <EightDay />}
     </div>
   );
 };
