@@ -55,10 +55,33 @@
   .Temp {
     width: 100%;
     height: 100px;
+    padding-right: 4%;
+    padding-left: 4%;
     background-color: orange;
     display: flex;
+    flex-direction: row;
     justify-content: space-between;
     align-items: center;
+
+    .Val {
+      font-size: 34px;
+    }
+
+    .Left {
+      height: 70%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      align-items: start;
+    }
+
+    .Right {
+      height: 70%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      align-items: start;
+    }
   }
 
   .Info {
