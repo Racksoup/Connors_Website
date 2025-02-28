@@ -5,6 +5,7 @@ import weatherReducer from './weatherSlice';
 import calendarReducer from './calendarSlice';
 import newsReducer from './newsSlice';
 import scheduleReducer from './scheduleSlice';
+import worldNewsAPIReducer from './worldNewsAPISlice';
 
 export const store = configureStore({
   reducer: {
@@ -14,5 +15,6 @@ export const store = configureStore({
     calendar: calendarReducer,
     news: newsReducer,
     schedule: scheduleReducer,
+    worldNews: worldNewsAPIReducer,
   },
 });

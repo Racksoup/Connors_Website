@@ -38,7 +38,7 @@ const Home = () => {
           New Article
         </button>
         {french && (
-          <div className='News'>
+          <div className='Articles'>
             <div className='Side'>
               <h2>{french.title}</h2>
               <p>{french.content}</p>

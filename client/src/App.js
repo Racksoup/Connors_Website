@@ -6,6 +6,7 @@ import AdminLogin from './UI/Pages/AdminLogin/AdminLogin.jsx';
 import Navbar from './UI/Components/Navbar/Navbar.jsx';
 import Footer from './UI/Components/Footer/Footer.jsx';
 import Lists from './UI/Pages/Lists/Lists.jsx';
+import News from './UI/Pages/News/News.jsx';
 import Weather from './UI/Pages/Weather/Weather.jsx';
 import Calendar from './UI/Pages/Calendar/Calendar.jsx';
 import JournalEntry from './UI/Pages/Journal/JournalEntry.jsx';
@@ -31,6 +32,7 @@ const App = () => {
           <Route exact path='/' element={<Home />} />
           <Route exact path='/admin-login' element={<AdminLogin />} />
           <Route exact path='/lists' element={<Lists />} />
+          <Route exact path='/news' element={<News />} />
           <Route exact path='/weather' element={<Weather />} />
           <Route exact path='/calendar' element={<Calendar />} />
           <Route exact path='/journal-entry' element={<JournalEntry />} />
