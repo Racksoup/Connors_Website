@@ -19,15 +19,22 @@ const Current = () => {
       <div className='Temp'>
         <div className='Left'>
           <p> Current </p>
-          <p className='Val'>{Math.floor((currentWeather.temp - 273.15) *100) /100}</p>
+          <p className='Val'>{Math.floor((currentWeather.temp - 273.15) *10) /10}</p>
         </div>
         <div className='Right'>
           <p> Feel </p>
-          <p className='Val'>{Math.floor((currentWeather.feels_like - 273.15) *100) /100}</p>
+          <p className='Val'>{Math.floor((currentWeather.feels_like - 273.15) *10) /10}</p>
         </div>
       </div>
       <div className='Info'>
-
+        <div className='InfoTop'>
+          <p className='InfoText'>{currentWeather.weather[0].main}</p>
+          <p className='InfoText'> {currentWeather.weather[0].description}</p>
+        </div>
+        <div className='InfoBottom'>
+          <p className='InfoText'>Humid: {Math.floor((currentWeather.humidity) *10) /10}</p>
+          <p className='InfoText'>Wind: {Math.floor((currentWeather.wind_speed) *10) /10} </p>
+        </div>
       </div>
     </div>
 }
