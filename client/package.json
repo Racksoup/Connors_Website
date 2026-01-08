@@ -17,6 +17,7 @@
     "@fortawesome/react-fontawesome": "^0.1.18",
     "@reduxjs/toolkit": "^1.8.2",
     "axios": "^0.27.2",
+    "core-js": "^3.47.0",
     "lodash": "^4.17.21",
     "node-sass": "^9.0.0",
     "react": "^18.1.0",
