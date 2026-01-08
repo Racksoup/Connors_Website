@@ -1,52 +1,6 @@
 @import "../../../Vars.scss";
 
 .Home {
-  @include Section;
-
-  .Btn {
-    margin: 1rem 0;
-  }
-
-  .Articles {
-    width: 60rem;
-    display: flex;
-    justify-content: space-between;
-
-    .Side {
-      width: 25rem;
-      border-radius: .3rem;
-      border: solid grey 0.05rem;
-      margin: 1rem 0.5rem;
-
-      h2 {
-        font-size: 1.4rem;
-        text-align: center;
-      }
-
-      p {
-        font-size: 0.9rem;
-        text-align: center;
-        overflow-y: scroll;
-        padding: 0.5rem;
-      }
-    }
-  }
-
-  @media (max-width: 1000px) {
-    .News {
-      width: 95%;
-      margin: auto;
-    }
-  }
-
-  @media (max-width: 800px) {
-    .News {
-      flex-direction: column;
-
-
-      .Side {
-        width: 100%;
-      }
-    }
-  }
+  width: 100vw;
+  height: 100vh;
 }

@@ -86,7 +86,6 @@ const JournalEntry = () => {
             Submit
           </div>
         </div>
-        <div className='Content'>
           <div className='ButtonsFrame'>
             {newFile.name ? (
               <p className='Label'>{newFile.name}</p>
@@ -102,19 +101,17 @@ const JournalEntry = () => {
             ></input>
             <div className='Btn' onClick={() => inputClicked()} />
           </div>
-          <div className='EditPictures'>
-            {journal.image_filename && (
-              <img className='PictureFrame' src={`api/journal/image/${journal.image_filename}`} />
-            )}
-          </div>
           <textarea
-            className='Input'
             type='text'
             name='text'
             value={text}
             onChange={(e) => onChange(e)}
           ></textarea>
-        </div>
+          <div className='EditPictures'>
+            {journal.image_filename && (
+              <img className='PictureFrame' src={`api/journal/image/${journal.image_filename}`} />
+            )}
+          </div>
       </div>
     );
   } else {
