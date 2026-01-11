@@ -10,6 +10,7 @@ import Calendar from './UI/Pages/Calendar/Calendar.jsx';
 import JournalEntry from './UI/Pages/Journal/JournalEntry.jsx';
 import JournalView from './UI/Pages/Journal/JournalView.jsx';
 import Schedule from './UI/Pages/Schedule/Schedule.jsx';
+import { getOneCallWeather } from "./Redux/weatherSlice";
 
 import { Route, Routes } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
@@ -20,6 +21,11 @@ const App = () => {
   useEffect(() => {
     dispatch(loadAdmin());
   }, []);
+
+  useEffect(() => {
+    dispatch(getOneCallWeather());
+  }, []);
+
 
 if (
   "serviceWorker" in navigator &&

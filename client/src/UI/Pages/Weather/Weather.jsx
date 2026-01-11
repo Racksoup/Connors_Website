@@ -8,7 +8,6 @@ import {
   selectIsAuthenticated,
   selectLoading,
 } from "../../../Redux/adminSlice";
-import { getOneCallWeather } from "../../../Redux/weatherSlice";
 
 import { Navigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
@@ -18,10 +17,6 @@ const Weather = () => {
   const [layout, toggleLayout] = useState('current');
   const isAuthenticated = useSelector(selectIsAuthenticated);
   const loading = useSelector(selectLoading);
-
-  useEffect(() => {
-    dispatch(getOneCallWeather());
-  }, []);
 
   if (!isAuthenticated && !loading) {
     return <Navigate to="/admin-login" />;

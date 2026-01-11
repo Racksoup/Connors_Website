@@ -1,5 +1,29 @@
 .mobile_footer {
   width: 100%;
-  height: 40px;
-  background-color: red;
+  height: 6%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 0 .7rem;
+  //border-top: solid 1px rgb(100,100,100);
+  background-color: rgb(23,24,34);
+
+  .btn {
+    height: 90%;
+    width: 10%;
+
+    .icon {
+      height: 60%;
+      width: 100%;
+
+      path {
+        color: rgb(216,218,230);
+      }
+    }
+
+    p {
+      color: rgb(216,218,230);
+      font-size: 1.6rem;
+    }
+  }
 }

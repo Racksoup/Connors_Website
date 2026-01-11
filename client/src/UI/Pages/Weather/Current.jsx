@@ -7,8 +7,6 @@ import { useSelector } from 'react-redux';
 const Current = () => {
   const currentWeather = useSelector(selectCurrent);
 
-  console.log(currentWeather);
-  
   if (currentWeather)
     return <div className='Current'>
       <h3 className='Date'>

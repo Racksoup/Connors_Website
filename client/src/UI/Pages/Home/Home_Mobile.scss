@@ -1,8 +1,185 @@
 .home_mobile {
   width: 100vw;
   height: 100vh;
-  background-color: teal;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  background-color: rgb(23,24,34);
+  color: rgb(216,218,230);
+
+
+  .content{
+    width: 100%;
+    height: 94%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: .4rem 1rem;
+
+    .quote {
+      height: 2%;
+      margin: 0 auto;
+      font-size: 1.3rem;
+      color: rgb(216,218,230);
+    }
+    
+    .weather {
+      height: 18%;
+      width: 100%;
+      border-radius: 1rem;
+      background-color: rgb(30,32,45);
+      display: flex;
+
+      .weather-img {
+        height: 100%;
+        width: 30%;
+      }
+
+      .info {
+        display: flex;
+        flex-direction: column;
+        margin: .5rem 1rem;
+        width: 70%;
+
+        .date {
+          align-self: center;
+          font-size: .9rem;
+        }
+
+        .temp-row {
+          margin: .2rem 0 .2rem 0;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+
+          .temp-box{
+            display: flex;
+            margin: auto;
+            
+            .temp {
+              font-size: 2.5rem;
+              text-align: center;
+            }
+
+            .deg {
+              font-size: 1.2rem;
+            }
+          }
+
+          .real-box {
+            display: flex;
+            border: solid 1px rgb(100,100,100);
+            width: 32%;
+            height: 22px;
+            padding: 2px 4px;
+            font-size: .8rem;
+            justify-content: space-between;
+
+            .deg {
+              font-size: .5rem;
+              margin-left: -.7rem;
+            }
+          }
+        }
+
+        .misc-info {
+          margin: -.1rem 0 0 0;
+          display: flex;
+          flex-direction: row;
+          justify-content: space-between;
+          align-items: center;
+
+          .text-info {
+            display: flex;
+            flex-direction: column;
+            width: 60%;
+
+            .weather-condition {
+              align-self: center;
+              font-size: 1rem;
+              margin-bottom: .2rem;
+            }
+          }
+
+          .high-low {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            border: solid 1px rgb(100,100,100);
+            height: 34px;
+            width: 42px;
+            padding: 0 .4rem;
+            justify-content: space-around;
+
+            .high-low-row {
+              display: flex;
+              justify-content: space-between;
+            }
+          }
+
+          p {
+            font-size: .6rem;
+          }
+        }
+      }
+    }
+
+    .tasks {
+      height: 65%;
+      width: 100%;
+      border-radius: 1rem;
+      background-color: rgb(30,32,45);
+      padding: 1rem .5rem 0 .5rem;
+      overflow: auto;
+
+      .task {
+        display: flex;
+        align-items: center;
+        margin-bottom: .5rem;
+        
+        .time {
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+          height: 41px;
+
+          .start {
+            color: rgb(91, 225, 135);
+            font-size: 1rem;
+          }
+          .end {
+            color: rgb(238, 80, 135);
+            font-size: 1rem;
+          }
+        }
+        
+        .spacer {
+          width: 1px;
+          align-self: stretch;
+          background-color: rgb(100,100,100);
+          margin: 4% .4rem 4% .5rem;
+        }
+
+        .info {
+        }
+      }
+    }
+
+    .quick-btns {
+      height: 8%;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+
+      .btn {
+        width: 31%;
+        height: 100%;
+        border-radius: 1rem;
+        background-color: rgb(30,32,45);
+        font-size: .9rem;
+      }
+    }
+  }
 }
+
+

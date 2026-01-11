@@ -17,7 +17,7 @@ const Home = () => {
   } else {
     return (
       <div className='Home'>
-        {window.innerWidth > 412 ?
+        {window.innerWidth > 550 ?
         <Navbar />
         :
         <Home_Mobile />
