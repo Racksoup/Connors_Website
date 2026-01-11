@@ -17,6 +17,8 @@ import { Link } from 'react-router-dom';
 
 const Mobile_Footer = () => {
   
+  if (window.innerWidth > 550) return null;
+  
   return(
     <div className='mobile_footer'>
       <Link className='btn' to='/'>

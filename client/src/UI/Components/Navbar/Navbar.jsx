@@ -10,6 +10,8 @@ const Navbar = () => {
   const auth = useSelector(selectIsAuthenticated);
   const loading = useSelector(selectLoading);
 
+  if (window.innerWidth < 550) return null;
+
   if (auth && !loading) {
     return (
       <div className='Navbar'>
