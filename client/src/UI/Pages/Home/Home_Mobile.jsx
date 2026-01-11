@@ -117,7 +117,6 @@ const Home_Mobile = () => {
           <button className='btn'>Quick Note</button>
         </div>
       </div>
-      <Mobile_Footer />
     </div>
   )
 }

@@ -11,6 +11,7 @@ import JournalEntry from './UI/Pages/Journal/JournalEntry.jsx';
 import JournalView from './UI/Pages/Journal/JournalView.jsx';
 import Schedule from './UI/Pages/Schedule/Schedule.jsx';
 import { getOneCallWeather } from "./Redux/weatherSlice";
+import Mobile_Footer from './UI/Components/Mobile_Footer/Mobile_Footer.jsx';
 
 import { Route, Routes } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
@@ -54,6 +55,7 @@ if (
           <Route exact path='/schedule' element={<Schedule />} />
         </Routes>
 	  {/*<Footer /> */}
+      <Mobile_Footer />
       </div>
     </div>
   );
