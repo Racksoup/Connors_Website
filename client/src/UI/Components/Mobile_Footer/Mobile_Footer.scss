@@ -7,8 +7,11 @@
   padding: 0 .7rem;
   //border-top: solid 1px rgb(100,100,100);
   background-color: rgb(23,24,34);
-  position: absolute;
+  position: fixed;
   bottom: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
 
   .btn {
     height: 90%;
