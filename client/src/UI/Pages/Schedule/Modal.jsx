@@ -20,7 +20,7 @@ const Modal = ({ toggleModal, Func, initState, title }) => {
 
   return (
     <div className='Modal-Background' onClick={() => toggleModal(false)}>
-      <div className='Modal' onClick={(e) => e.stopPropagation()}>
+      <div className='Modal-schedule' onClick={(e) => e.stopPropagation()}>
         <h2 className='Title'>{title}</h2>
         <input
           type='text'
