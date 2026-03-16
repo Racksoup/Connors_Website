@@ -14,7 +14,6 @@ router.get('/', async (req, res, next) => {
     const weather = await axios.get(
       `https://api.openweathermap.org/data/3.0/onecall?lat=${Latitude}&lon=${Longitude}&exclude=alerts&appid=${WeatherID}`
     );
-    console.log(weather.data);
     res.json(weather.data);
   } catch (err) {
     console.error('Error fetching weather data:', err);

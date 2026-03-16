@@ -44,6 +44,7 @@ if (
     <div className='App-Main'>
       <div className='App-Background' />
       <div className='App-Content'>
+      <Navbar />
         <Routes>
           <Route exact path='/' element={<Home />} />
           <Route exact path='/admin-login' element={<AdminLogin />} />
@@ -55,7 +56,6 @@ if (
           <Route exact path='/journal-view' element={<JournalView />} />
           <Route exact path='/schedule' element={<Schedule />} />
         </Routes>
-      <Navbar />
       <Mobile_Footer />
       </div>
     </div>
