@@ -1,0 +1,24 @@
+@import "../../../Vars.scss";
+
+.AddTaskModal {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  background-color: rgba(0, 0, 0, 0.4);
+  display: flex;
+  justify-content: center;
+
+  .content {
+    position: absolute;
+    margin-top: 30vh;
+    width: 90%;
+    height: 10rem;
+    border-radius: 1.5rem;
+    border: solid rbg(100,100,100) .1rem;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    background-color: white;
+  }
+}

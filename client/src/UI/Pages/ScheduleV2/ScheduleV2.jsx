@@ -1,10 +1,33 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import './ScheduleV2.scss';
+import {
+  selectTasks,
+  selectLastTasks,
+  deleteTask,
+  updateTask,
+  createTask,
+  getTasks,
+  getLastTasks,
+} from '../../../Redux/scheduleSlice';
+import { selectIsAuthenticated, selectLoading } from '../../../Redux/adminSlice';
+import AddTaskModal from './AddTaskModal.jsx';
+
+import { useSelector, useDispatch } from 'react-redux';
 
 const ScheduleV2 = () => {
-  
+  const dispatch = useDispatch();
+  const isAuthenticated = useSelector(selectIsAuthenticated);
+  const loading = useSelector(selectLoading);
+  const tasks = useSelector(selectTasks);
+  const [addTaskModal, setAddTaskModal] = useState(false);
+
+  if (!isAuthenticated && !loading) {
+    return <Navigate to='/admin-login' />;
+  }
+
   return (
     <div className='ScheduleV2'>
+      {addTaskModal && (<AddTaskModal addTaskModal={addTaskModal} setAddTaskModal={setAddTaskModal}/>)}
        <div className='tasks'>
           <div className='task'>
             <div className='time'>
@@ -37,7 +60,7 @@ const ScheduleV2 = () => {
             </p>
           </div>
         </div>
-      <button className='add-task'>Add Task</button>
+      <button className='add-task' onClick={() => setAddTaskModal(true)}>Add Task</button>
     </div>
   )
 }
