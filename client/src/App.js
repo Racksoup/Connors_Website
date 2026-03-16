@@ -10,6 +10,7 @@ import Calendar from './UI/Pages/Calendar/Calendar.jsx';
 import JournalEntry from './UI/Pages/Journal/JournalEntry.jsx';
 import JournalView from './UI/Pages/Journal/JournalView.jsx';
 import Schedule from './UI/Pages/Schedule/Schedule.jsx';
+import ScheduleV2 from './UI/Pages/ScheduleV2/ScheduleV2.jsx';
 import { getOneCallWeather } from "./Redux/weatherSlice";
 import Mobile_Footer from './UI/Components/Mobile_Footer/Mobile_Footer.jsx';
 import Navbar from './UI/Components/Navbar/Navbar.jsx';
@@ -54,7 +55,7 @@ if (
           <Route exact path='/calendar' element={<Calendar />} />
           <Route exact path='/journal-entry' element={<JournalEntry />} />
           <Route exact path='/journal-view' element={<JournalView />} />
-          <Route exact path='/schedule' element={<Schedule />} />
+          <Route exact path='/schedule' element={<ScheduleV2 />} />
         </Routes>
       <Mobile_Footer />
       </div>
