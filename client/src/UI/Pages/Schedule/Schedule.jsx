@@ -19,7 +19,7 @@ const Schedule = () => {
   const isAuthenticated = useSelector(selectIsAuthenticated);
   const loading = useSelector(selectLoading);
   const tasks = useSelector(selectTasks);
-  const lastTasks = useSelector(selectLastTasks);
+  //const lastTasks = useSelector(selectLastTasks);
   const [task, setTask] = useState({ task: '', date: '' });
   const monthsOfYear = [
     'January',
@@ -59,7 +59,7 @@ const Schedule = () => {
     }
     lastDaysArr.reverse();
     setLast3Days(lastDaysArr);
-    dispatch(getLastTasks(lastDaysArr));
+    //dispatch(getLastTasks(lastDaysArr));
   }, []);
 
   if (!isAuthenticated && !loading) {

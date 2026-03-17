@@ -22,6 +22,17 @@ router.get('/tasks/:date1/:date2', adminAuth, async (req, res) => {
   }
 });
 
+// get all tasks
+router.get('/tasks', adminAuth, async (req, res) => {
+  try {
+    const tasks = await ScheduleTask.find();
+    res.json(tasks);
+  } catch (error) {
+    console.log(error);
+    res.status(500).send('Server Error');
+  }
+});
+
 // get one task
 router.get('/task/:id', adminAuth, async (req, res) => {
   try {
@@ -34,10 +45,13 @@ router.get('/task/:id', adminAuth, async (req, res) => {
 
 // post task
 router.post('/', adminAuth, async (req, res) => {
-  const { date, task } = req.body;
-  const postItem = {};
-  postItem.date = date;
-  postItem.task = task;
+  const { date, task, start_time, end_time } = req.body;
+  const postItem = {
+    task  
+  };
+  if (date) postItem.date = date;
+  if (start_time) postItem.start_time = start_time;
+  if (end_time) postItem.end_time = end_time;
 
   try {
     const item = new ScheduleTask(postItem);

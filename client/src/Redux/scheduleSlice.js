@@ -3,11 +3,9 @@ import axios from 'axios';
 
 const initialState = {
   tasks: null,
-  lastTasks: null,
 };
 
 export const selectTasks = (state) => state.schedule.tasks;
-export const selectLastTasks = (state) => state.schedule.lastTasks;
 
 export const scheduleSlice = createSlice({
   name: 'schedule',
@@ -33,9 +31,6 @@ export const scheduleSlice = createSlice({
     },
     gotTasks: (state, action) => {
       state.tasks = action.payload;
-    },
-    gotLastTasks: (state, action) => {
-      state.lastTasks = action.payload;
     },
   },
 });
@@ -76,23 +71,16 @@ export const getTask = (id) => async (dispatch) => {
   }
 };
 
-export const getTasks = (dates) => async (dispatch) => {
+export const getTasks = () => async (dispatch) => {
   try {
-    const res = await axios.get(`api/schedule/tasks/${dates[0]}/${dates[20]}`);
+    const res = await axios.get(`api/schedule/tasks/`);
     dispatch(gotTasks(res.data));
   } catch (error) {
     console.log(error);
   }
 };
 
-export const getLastTasks = (dates) => async (dispatch) => {
-  try {
-    const res = await axios.get(`api/schedule/tasks/${dates[0]}/${dates[dates.length - 1]}`);
-    dispatch(gotLastTasks(res.data));
-  } catch (error) {
-    console.log(error);
-  }
-};
+
 
 export const { createdTask, updatedTask, deletedTask, gotTask, gotTasks, gotLastTasks } =
   scheduleSlice.actions;
