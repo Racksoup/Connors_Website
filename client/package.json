@@ -10,6 +10,12 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
+  "babel": {
+    "presets": [
+      "@babel/preset-env",
+      "@babel/preset-react"
+    ]
+  },
   "dependencies": {
     "@emotion/react": "^11.14.0",
     "@emotion/styled": "^11.14.1",
@@ -24,7 +30,6 @@
     "core-js": "^3.47.0",
     "dayjs": "^1.11.20",
     "lodash": "^4.17.21",
-    "node-sass": "^9.0.0",
     "react": "^18.1.0",
     "react-bootstrap": "^2.5.0",
     "react-dom": "^18.1.0",
@@ -43,8 +48,9 @@
     "file-loader": "^6.2.0",
     "html-webpack-plugin": "^5.5.0",
     "redux-devtools-extension": "^2.13.9",
-    "sass": "^1.51.0",
-    "sass-loader": "^13.0.0",
+    "sass": "^1.98.0",
+    "sass-embedded": "^1.98.0",
+    "sass-loader": "^16.0.7",
     "style-loader": "^3.3.1",
     "svg-url-loader": "^7.1.1",
     "url-loader": "^4.1.1",

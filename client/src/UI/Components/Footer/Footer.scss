@@ -1,4 +1,4 @@
-@import "../../../Vars.scss";
+@use "../../../Vars";
 
 .Footer {
   width: 100vw;
@@ -7,7 +7,7 @@
   display: flex;
   justify-content: center;
 
-  @media (max-width: $lowerBreak) {
+  @media (max-width: Vars.$lowerBreak) {
     padding: 1.5rem 0;
   }
 

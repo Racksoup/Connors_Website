@@ -10,9 +10,9 @@ const devConfig = {
     historyApiFallback: true,
     proxy: {
       '/api': {
-        target: 'http://localhost:8080',
-        router: () => 'http://localhost:5000',
-        logLevel: 'debug' /*optional*/,
+        target: 'http://localhost:5000',
+        changeOrigin: true,
+        logLevel: 'debug',
       },
     },
   },
@@ -24,7 +24,14 @@ const devConfig = {
       },
       {
         test: /\.s[ac]ss$/i,
-        use: ['style-loader', 'css-loader', 'sass-loader'],
+        use: ['style-loader', 'css-loader', 
+          {
+            loader: 'sass-loader',
+            options: {
+              api: 'modern-compiler',
+            },
+          },
+        ],
       },
     ],
   },
