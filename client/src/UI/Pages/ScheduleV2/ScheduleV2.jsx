@@ -31,7 +31,6 @@ const ScheduleV2 = () => {
     return <Navigate to='/admin-login' />;
   }
     
-  console.log(tasks);
   if (tasks) { return (
     <div className='ScheduleV2'>
       {addTaskModal && (<AddTaskModal addTaskModal={addTaskModal} setAddTaskModal={setAddTaskModal}/>)}
@@ -39,8 +38,12 @@ const ScheduleV2 = () => {
          {tasks.map((task) => {return (
            <div className='task'>
              <div className='time'>
-               <p className='start'>{formatTime(task.start_time)}</p>
-               <p className='end'>{formatTime(task.end_time)}</p>
+               {task.start_time && (
+                 <p className='start'>{formatTime(task.start_time)}</p>
+               )}
+               {task.end_time && (
+                 <p className='end'>{formatTime(task.end_time)}</p>
+               )}
              </div>
              <div className='spacer'></div>
              <p className='info'> {task.task} </p>

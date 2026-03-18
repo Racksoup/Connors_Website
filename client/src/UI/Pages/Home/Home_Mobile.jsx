@@ -11,7 +11,6 @@ const Home_Mobile = () => {
   const hourlyWeather = useSelector(selectHourly);
   
   if (!currentWeather || !hourlyWeather) return null;
-  console.log(hourlyWeather);
 
   const next18Hours = hourlyWeather.slice(0,18);
 

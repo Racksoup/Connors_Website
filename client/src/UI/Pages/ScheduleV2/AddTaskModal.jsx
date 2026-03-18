@@ -26,13 +26,38 @@ const AddTaskModal = ({ addTaskModal, setAddTaskModal}) => {
   const [text, setText] = useState("")
   const [task, setTask] = useState({ task: '', date: dayjs().tz('America/Toronto').add(1, 'day'), start_time: dayjs().hour(16).minute(20), end_time: dayjs().hour(16).minute(20) });
 
+  const sendTask = () => {
+    let payload = { ...task };
+
+    if (!activeStartTime) delete payload.start_time;
+    if (!activeEndTime) delete payload.end_time;
+    if (!activeDate) delete payload.date;
+
+    dispatch(createTask(payload));
+  };
+
   return (
     <div className='AddTaskModal' onClick={() => setAddTaskModal(false)}>
       <div className='content' onClick={(e) => e.stopPropagation()}>
         <LocalizationProvider dateAdapter={AdapterDayjs}>
-          {activeStartTime && (<MobileTimePicker label="Start Time" className='time-picker' value={task.start_time} onChange={(newValue) => setTask({ ...task, start_time: newValue})}/>)}
-          {activeEndTime && (<MobileTimePicker label="End Time" className='time-picker' value={task.end_time} onChange={(newValue) => setTask({ ...task, end_time: newValue})}/>)}
-          {activeDate && (<MobileDatePicker label="Date" className='time-picker' value={task.date} onChange={(newValue) => setTask({ ...task, date: newValue})}/>)}
+          {activeStartTime && (
+            <div className='time-picker-row'>
+              <MobileTimePicker label="Start Time" className='time-picker' value={task.start_time} onChange={(newValue) => setTask({ ...task, start_time: newValue})}/>
+              <button className='hide-btn' onClick={() => setActiveStartTime(false)}>X</button>
+            </div>
+          )}
+          {activeEndTime && (
+            <div className='time-picker-row'>
+              <MobileTimePicker label="End Time" className='time-picker' value={task.end_time} onChange={(newValue) => setTask({ ...task, end_time: newValue})}/>
+              <button className='hide-btn' onClick={() => setActiveEndTime(false)}>X</button>
+            </div>
+          )}
+          {activeDate && (
+            <div className='time-picker-row'>
+              <MobileDatePicker label="Date" className='time-picker' value={task.date} onChange={(newValue) => setTask({ ...task, date: newValue})}/>
+              <button className='hide-btn' onClick={() => setActiveDate(false)}>X</button>
+            </div>
+          )}
         </LocalizationProvider>
         {(!activeStartTime || !activeEndTime || !activeDate) && (<div className='active-buttons'>
           {!activeStartTime && (<button className='active-button' onClick={() => setActiveStartTime(true)}>Start Time</button>)}
@@ -40,7 +65,7 @@ const AddTaskModal = ({ addTaskModal, setAddTaskModal}) => {
           {!activeDate && (<button className='active-button' onClick={() => setActiveDate(true)}>Date</button>)}
         </div>)}
         <textarea onChange={(e) => setTask({ ...task, task: e.target.value})} placeholder='Task details' rows="5" cols="50"/>
-        <button onClick={() => {setAddTaskModal(false); dispatch(createTask(task))}} className='submit'>Submit</button>
+        <button onClick={() => {setAddTaskModal(false); sendTask()}} className='submit'>Submit</button>
       </div>
     </div>
   )
