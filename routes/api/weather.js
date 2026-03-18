@@ -8,7 +8,6 @@ const express = require('express');
 const router = express.Router();
 
 router.get('/', async (req, res, next) => {
-  console.log('one-call')
   try {
     // Optionally validate input parameters here if coming from req.query or req.params
     const weather = await axios.get(

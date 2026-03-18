@@ -1,7 +1,7 @@
-@import "../../../Vars.scss";
+@use "../../../Vars";
 
 .AdminLogin {
-  @include Section;
+  @include Vars.Section;
   margin-top: 5rem;
   margin-bottom: 5rem;
 

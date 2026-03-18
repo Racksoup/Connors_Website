@@ -1,5 +1,5 @@
-@import "./UI/Styles/Btn.scss";
-@import "./Vars.scss";
+@use "./UI/Styles/Btn";
+@use "./Vars";
 
 html {
   width: 100%;
@@ -59,7 +59,7 @@ button {
   }
 
   &-Background {
-    background-color: $bgColor;
+    background-color: Vars.$bgColor;
     position: fixed;
     z-index: -4;
     height: 100%;
