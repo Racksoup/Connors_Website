@@ -11,6 +11,7 @@ import {
   faSun,
   faCalendar,
   faBullseye,
+  faChartLine
 } from "@fortawesome/free-solid-svg-icons";
 import { Link } from 'react-router-dom';
 
@@ -30,8 +31,8 @@ const Mobile_Footer = () => {
       <Link className='btn' to='/schedule'>
         <FontAwesomeIcon icon={faCheck} className="icon" />
       </Link>
-      <Link className='btn'>
-        <p>AI</p>
+      <Link className='btn' to='/stocks'>
+        <FontAwesomeIcon icon={faChartLine} className="icon" />
       </Link>
       <Link className='btn' to='/news'>
         <FontAwesomeIcon icon={faScroll} className="icon" />
