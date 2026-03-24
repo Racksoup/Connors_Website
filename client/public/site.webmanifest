@@ -3,8 +3,8 @@
   "short_name": "HomeBase",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#ffffff",
-  "theme_color": "#ffffff",
+  "background_color": "rgba(0,0,0,0)",
+  "theme_color": "rgba(0,0,0,0)",
   "icons": [
     {
       "src": "/android-chrome-192x192.png",
